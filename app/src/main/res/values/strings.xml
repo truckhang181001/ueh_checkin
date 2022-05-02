@@ -3,4 +3,34 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="password_change_notification">Mật khẩu phải bao gồm chữ và số, không chứa năm sinh, MSSV và Tên tài khoản của bạn.</string>
+
+    <string name="guide_annd_introduction"><b>Giới thiệu UEH Check Phiên bản:</b>
+        \n\n21.01.a1
+        \n\nLà một ứng dụng được phát triển bởi nhóm sinh viên ngành Kỹ thuật phần mềm phục vụ cho sinh viên UEH ghi danh các sự kiện được thuận lợi, tiết kiệm thời gian.
+        \n\nEmail góp ý cải thiện hệ thống:
+        \n<b>uehcheck.bit@gmail.com</b>
+        \n\n<b>Hướng dẫn sử dụng:</b>
+        \n\t- Chức năng chính của UEH Check là tạo và ghi danh ở sự kiện.
+        \n\t- Sự kiện có hai loại: công khai và riêng tư. Khi tạo sự kiện riêng tư, bạn phải thêm danh sách người tham dự thông qua file excel được tải lên.
+        \n\t- File excel chỉ gồm một cột chứa email, ghi lần lượt từ trên xuống
+        \n\t- Khi ghi danh sự kiện, thiết bị của bạn cần được bật định vị, và sai số không được phép quá 100m so với định vị của sự kiện trên bản đồ.
+        \n\t- Sau khi ghi danh một sự kiện, bạn không thể ghi danh sự kiện khác. Và chỉ được ghi danh sự kiện khác sau khi sự kiện này đã kết thúc hoặc sau 120 phút kể từ khi ghi danh.</string>
 </resources>
