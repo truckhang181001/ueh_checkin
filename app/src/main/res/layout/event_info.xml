@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/event1" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/icon_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_baseline_event_24"/>
+
+            <TextView
+                android:id="@+id/textView_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08/05/2022"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/icon_time"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/ic_baseline_event_24" />
+
+            <TextView
+                android:id="@+id/textView_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:00 đến 21:00"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:weightSum="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="Le hoi truyen thong Suc Tre Kinh Te"
+                android:textSize="30sp" />
+
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/ic_baseline_event_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/main_purple"
+            android:padding="10dp"
+            android:weightSum="10"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/ic_baseline_event_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:text="279 Nguyen Tri Phuong, Phuong 14, Quan 10"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Thông tin sự kiện"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            tools:layout_editor_absoluteX="101dp" />
+
+        <TextView
+            android:background="@color/main_grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:text="✨ NGÀY HỘI SỨC TRẺ KINH TẾ: UEH YOUTH FESTIVAL 2022 - VỮNG BƯỚC HƯỚNG VỀ TƯƠNG LAI ✨
+🤗 Dù UEH Youth Festival 2022 đã đi qua nhưng những giá trị mà chương trình để lại vẫn sẽ còn ở đó. Khi đặt chân đến với “Tiếu vương quốc Bình Chánh” thì có lẽ Ngày hội UEH Youth Festival 2022 đã để lại ấn tượng sâu sắc và những kỉ niệm đáng nhớ với các bạn sinh viên đúng không nào?
+🎆 Với sự tham gia của hơn 30 Đoàn - Hội Khoa/Viện/KTX và CLB/Đội/Nhóm đã góp phần giúp cho Ngày hội trở thành một bữa tiệc đa sắc màu. Ngoài những trải nghiệm công nghệ thông qua các miền không gian ảo, UEH Youth Festival 2022 còn mang đến những tiết mục được đầu tư kỹ lưỡng về cả phần nghe lẫn phần nhìn.
+❤️ Với những gì mà Ngày hội UEH Youth Festival 2022 đã làm được, BTC tin chắc rằng đã giúp cho các bạn sinh viên phần nào vững bước hơn trên chặng đường trở thành một “công dân toàn cầu” và tạo ra một sân chơi để các bạn sinh viên UEH để các bạn sinh viên có thể kết nối với nhau.
+👀 Sau đây, hãy cùng nhìn lại những khoảnh khắc đáng nhớ được ghi lại trong ngày hội #UEHYouthFestival2022 và các bạn đừng quên hãy đồng hành cùng Ban Phong trào – Tình nguyện UEH trong những chương trình sắp tới nhé.
+#STKT #UEHYouthFestival2022
+#ThangThanhnien2022 #InnovativeVersionUEH
+#ĐTN_HSV #YouthUEH #UEH #BPT"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
