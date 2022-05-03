@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
         eventAdapter = new EventAdapter(getActivity());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false );
         recyclerViewEvent.setLayoutManager(layoutManager);
-        eventAdapter.SetData(getListEvent());
+        eventAdapter.setData(getListEvent());
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
 
@@ -55,12 +55,12 @@ public class HomeFragment extends Fragment {
 
     private List<Event> getListEvent() {
         List<Event> list = new ArrayList<>();
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Cơ sở N, Bình Chính"));
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Cơ sở N, Bình Chính"));
+        list.add(new Event(R.drawable.event1, "Lửa xuân", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
+        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","59C, Nguyễn Đình Chiểu"));
+        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","Cơ sở N, Bình Chính"));
+        list.add(new Event(R.drawable.event1, "Lửa xuân","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
+        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả", "59C, Nguyễn Đình Chiểu"));
+        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả","Cơ sở N, Bình Chính"));
         return list;
     }
 }
