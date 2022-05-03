@@ -10,5 +10,7 @@
     <color name="mainblue">#4754F0</color>
     <color name="grey">#94989F</color>
     <color name="grey_light">#E8E7EF</color>
+    <color name="main_purple">#4855F0</color>
+    <color name="main_grey">#E8E7EF</color>
 
 </resources>
