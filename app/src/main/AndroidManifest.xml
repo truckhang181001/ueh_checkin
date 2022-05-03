@@ -23,9 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".SettingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserProfileActivity"
+            android:launchMode="singleTop"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

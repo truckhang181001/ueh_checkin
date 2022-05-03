@@ -11,21 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="?actionBarSize"
             android:src="@drawable/ic_arrow_back_app_blue"
             android:padding="8dp"/>
-        
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cài đặt hệ thông"
             android:layout_centerInParent="true"
+            android:text="Cài đặt hệ thống"
             android:textColor="@color/main_black"
             android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ScrollView
@@ -34,21 +33,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bật/tắt thông báo"
                     android:layout_centerVertical="true"
-                    android:textSize="22sp"
-                    android:textColor="@color/main_black"/>
+                    android:text="Bật/tắt thông báo"
+                    android:textColor="@color/main_black"
+                    android:textSize="22sp" />
 
                 <androidx.appcompat.widget.SwitchCompat
                     android:layout_width="wrap_content"
@@ -63,7 +64,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -88,7 +89,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -113,7 +114,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -138,7 +139,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -163,7 +164,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

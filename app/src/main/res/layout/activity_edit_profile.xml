@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="?actionBarSize"
@@ -33,6 +32,8 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -45,7 +46,7 @@
                     android:layout_width="250dp"
                     android:layout_height="250dp"
                     android:layout_centerInParent="true"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/input_box_app_gray">
 
                     <ImageView
@@ -59,10 +60,10 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,10 +98,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,8 +139,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -174,11 +175,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content">
 
                 <Button
-                    android:layout_width="120dp"
+                    android:id="@+id/button_confirm_change_profile"
+                    android:layout_width="150dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="Xác nhận"
