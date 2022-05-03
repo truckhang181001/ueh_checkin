@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:gravity="center"
-                    android:text="User Name"
+                    android:text="KhaBui-UEH"
                     android:textColor="@color/main_blue"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -48,16 +48,15 @@
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background=""
                         android:padding="1dp"
                         android:src="@drawable/ic_mail_outline" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:paddingStart="10dp"
                         android:gravity="center"
-                        android:text="Email"
+                        android:paddingStart="10dp"
+                        android:text="khabui.31191025985@st.ueh.edu.vn"
                         android:textColor="@color/main_black"
                         android:textSize="15sp"
                         android:textStyle="normal" />
@@ -81,7 +80,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:paddingStart="10dp"
-                        android:text="Phone Number"
+                        android:text="0374996432"
                         android:textColor="@color/main_black"
                         android:textSize="15sp"
                         android:textStyle="normal" />
@@ -104,17 +103,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:paddingStart="10dp"
-                        android:text="Address"
                         android:gravity="center"
+                        android:paddingStart="10dp"
+                        android:text="279, Nguyễn Tri Phương"
                         android:textColor="@color/main_black"
                         android:textSize="15sp"
                         android:textStyle="normal" />
                 </LinearLayout>
 
             </LinearLayout>
-
-
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
@@ -136,15 +133,13 @@
             />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:src="@tools:sample/avatars"
-            app:shapeAppearanceOverlay="@style/Circular"
-            android:elevation="15dp"
-            android:padding="5dp"
-            android:layout_centerHorizontal="true"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            />
-
+            android:layout_centerHorizontal="true"
+            android:elevation="15dp"
+            android:padding="5dp"
+            android:src="@tools:sample/avatars"
+            app:shapeAppearanceOverlay="@style/Circular" />
 
 
     </RelativeLayout>
