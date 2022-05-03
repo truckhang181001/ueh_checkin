@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".ui.home.HomeFragment">
 
@@ -41,12 +41,13 @@
                 android:textColor="@color/white" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/editTextSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_white"
                 android:drawableEnd="@drawable/ic_baseline_search_24"
+                android:drawableTint="@color/mainblue"
                 android:ems="10"
                 android:hint="Tìm kiếm"
                 android:inputType="textPersonName"
@@ -100,7 +101,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="30dp"
             android:layout_weight="1"
-            android:background="@color/grey_light"/>
+            android:background="@drawable/border_radius_grey"/>
 
     </LinearLayout>
 </ScrollView>

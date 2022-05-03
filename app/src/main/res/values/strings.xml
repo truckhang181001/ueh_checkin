@@ -3,4 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_event">Event</string>
     <string name="title_personal">Personal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="happening_fragment">Happening fragment</string>
+    <string name="happened_fragment">Happened fragment</string>
+    <string name="all_fragment">All fragment</string>
+
 </resources>
