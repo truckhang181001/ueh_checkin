@@ -1,4 +1,4 @@
-package com.codesieucap.ueh_checkin.ui.dashboard;
+package com.codesieucap.ueh_checkin.ui.search;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,24 +8,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.codesieucap.ueh_checkin.R;
-import com.codesieucap.ueh_checkin.databinding.FragmentDashboardBinding;
-import com.codesieucap.ueh_checkin.ui.search.ViewPagerAdapter;
+import com.codesieucap.ueh_checkin.databinding.FragmentSearchBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
-import java.util.List;
+public class SearchFragment extends Fragment {
 
-import event.Event;
-import event.SearchEventAdapter;
-
-public class DashboardFragment extends Fragment {
-
-    private FragmentDashboardBinding binding;
+    private FragmentSearchBinding binding;
 
     //bmk
     private TabLayout mTabLayout;
@@ -35,16 +27,16 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        SearchViewModel dashboardViewModel =
+                new ViewModelProvider(this).get(SearchViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //bmk
         mTabLayout = root.findViewById(R.id.tab_layout);
         mViewPager = root.findViewById(R.id.search_view_pager);
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(DashboardFragment.this);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(SearchFragment.this);
         mViewPager.setAdapter(viewPagerAdapter);
         new TabLayoutMediator(mTabLayout, mViewPager, (tab, position) -> {
             switch (position){
