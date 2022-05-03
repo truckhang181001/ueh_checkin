@@ -10,6 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
+            android:name=".ui.loginAndRegister.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.loginAndRegister.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventDetailActivity"
             android:exported="false" />
         <activity
