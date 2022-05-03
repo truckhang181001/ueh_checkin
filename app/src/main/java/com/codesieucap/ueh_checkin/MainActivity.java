@@ -1,18 +1,25 @@
 package com.codesieucap.ueh_checkin;
 
 import android.os.Bundle;
+import android.widget.TableLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.codesieucap.ueh_checkin.databinding.ActivityMainBinding;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,19 +58,19 @@ public class MainActivity extends AppCompatActivity {
         eventAdapter = new EventAdapter(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false );
         recyclerViewEvent.setLayoutManager(layoutManager);
-        eventAdapter.SetData(getListEvent());
+        eventAdapter.setData(getListEvent());
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
     }
 
     private List<Event> getListEvent() {
         List<Event> list = new ArrayList<>();
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Cơ sở N, Bình Chính"));
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Cơ sở N, Bình Chính"));
+        list.add(new Event(R.drawable.event1, "Lửa xuân", "mô tả", "279, Nguyễn Tri Phương"));
+        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "mô tả","59C, Nguyễn Đình Chiểu"));
+        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "mô tả","Cơ sở N, Bình Chính"));
+        list.add(new Event(R.drawable.event1, "Lửa xuân","mô tả", "279, Nguyễn Tri Phương"));
+        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn","mô tả", "59C, Nguyễn Đình Chiểu"));
+        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "mô tả","Cơ sở N, Bình Chính"));
         return list;
     }
 

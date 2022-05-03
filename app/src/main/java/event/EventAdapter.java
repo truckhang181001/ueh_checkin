@@ -23,7 +23,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         this.mContext = mContext;
     }
 
-    public void SetData(List<Event> list){
+    public void setData(List<Event> list){
         this.eventList = list;
         notifyDataSetChanged();
     }
