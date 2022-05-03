@@ -1,15 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.add_event.AddEventFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <TextView
+            android:text="Tên sự kiện"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:background="@drawable/border_radius_grey"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Ngày diễn ra:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:background="@drawable/border_radius_grey"
+                android:padding="10dp"
+                android:drawableEnd="@drawable/ic_baseline_date_range_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Thời gian:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/editTextTime"
+                android:drawableEnd="@drawable/ic_baseline_access_time_24"
+                android:background="@drawable/border_radius_grey"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="time" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Địa điểm"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:background="@drawable/border_radius_grey"
+            android:drawableEnd="@drawable/ic_baseline_location_on_24"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Chi tiết"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:background="@drawable/border_radius_grey"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <TextView
+            android:text="Thêm ảnh bìa"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:background="@drawable/border_radius_grey"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_image_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:text="Danh sách tham gia"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:gravity="center"
+            android:background="@drawable/border_radius_grey"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:src="@drawable/ic_baseline_file_upload_50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <Button
+            android:text="Tạo sự kiện"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:layout_gravity="right"
+            android:textAllCaps="false"
+            android:layout_width="150dp"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+</ScrollView>
