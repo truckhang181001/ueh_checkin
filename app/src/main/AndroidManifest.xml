@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".ui.notifications.EditProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".PasswordChangeSuccess"
+            android:name=".ui.notifications.PasswordChangeSuccess"
             android:exported="false" />
         <activity
-            android:name=".GuideAndIntroductionActivity"
+            android:name=".ui.notifications.GuideAndIntroductionActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".ui.notifications.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".ui.notifications.SettingActivity"
             android:launchMode="singleTop"
             android:exported="false" />
         <activity

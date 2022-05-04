@@ -1,4 +1,4 @@
-package com.codesieucap.ueh_checkin;
+package com.codesieucap.ueh_checkin.ui.notifications;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.codesieucap.ueh_checkin.R;
 
 public class EditProfileActivity extends AppCompatActivity {
 

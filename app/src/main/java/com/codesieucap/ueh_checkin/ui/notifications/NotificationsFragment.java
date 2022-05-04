@@ -7,18 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.codesieucap.ueh_checkin.ChangePasswordActivity;
-import com.codesieucap.ueh_checkin.EditProfileActivity;
-import com.codesieucap.ueh_checkin.GuideAndIntroductionActivity;
 import com.codesieucap.ueh_checkin.R;
-import com.codesieucap.ueh_checkin.SettingActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {

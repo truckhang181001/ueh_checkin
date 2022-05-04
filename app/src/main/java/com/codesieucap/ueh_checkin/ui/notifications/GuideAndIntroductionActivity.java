@@ -1,8 +1,10 @@
-package com.codesieucap.ueh_checkin;
+package com.codesieucap.ueh_checkin.ui.notifications;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.codesieucap.ueh_checkin.R;
 
 public class GuideAndIntroductionActivity extends AppCompatActivity {
 
