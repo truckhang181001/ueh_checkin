@@ -13,4 +13,8 @@
     <color name="main_purple">#4855F0</color>
     <color name="main_grey">#E8E7EF</color>
 
+    <color name="main_blue">#4754F0</color>
+    <color name="main_black">#29303E</color>
+    <color name="main_gray">#BAB9D0</color>
+    <color name="red">#FF0000</color>
 </resources>
