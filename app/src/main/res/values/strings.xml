@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ueh_checkin</string>
     <string name="title_home">Home</string>
-    <string name="title_event">Event</string>
+    <string name="title_event">New Event</string>
     <string name="title_search">Search</string>
     <string name="title_personal">Personal</string>
     <!-- TODO: Remove or change this placeholder text -->

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "514077665344",
+    "firebase_url": "https://ueh-checkin-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ueh-checkin",
+    "storage_bucket": "ueh-checkin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514077665344:android:aaee1d5066e4c2a1a4d7a5",
+        "android_client_info": {
+          "package_name": "com.codesieucap.ueh_checkin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514077665344-pf20nh3m8a7o3f4ggdmmssfeiphebjv0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsZz1e_TnTgKzB_tsrn0ir-9EJC2-QCWQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514077665344-pf20nh3m8a7o3f4ggdmmssfeiphebjv0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
