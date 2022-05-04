@@ -8,17 +8,17 @@ import android.widget.TextView;
 
 import com.codesieucap.ueh_checkin.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class FogetPassword2Activity extends AppCompatActivity {
 
-    private TextView foget_password;
+    private TextView send_otp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_foget_password2);
 
-        foget_password = findViewById(R.id.foget_password);
-        String htmlString="<u>Quên mật khẩu</u>";
-        foget_password.setText(Html.fromHtml(htmlString));
+        send_otp = findViewById(R.id.send_OTP_again);
+        String htmlString="<u>Gửi lại mã</u>";
+        send_otp.setText(Html.fromHtml(htmlString));
     }
 }

@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/drawable/ic_location_on.xml" value="0.213" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_change_password.xml" value="0.22245673279864922" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_edit_profile.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_guide_and_introduction.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_password_change_success.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_setting.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_dashboard.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_notifications.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_search.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/item_event.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/item_event_search.xml" value="0.22530996152201796" />
+        <entry key="..\:/Users/84942/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/profile_user.xml" value="0.10431808465156049" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/drawable/border_radius.xml" value="0.1" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/drawable/border_radius_grey.xml" value="0.169" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/drawable/border_radius_white.xml" value="0.169" />
@@ -14,16 +26,22 @@
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_event_detail.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password1.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password2.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password3.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_guide_and_introduction.xml" value="0.1" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_main2.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_password_change_success.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_policy.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_register_success.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_welcome.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/border_radius.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_add_event.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_all.xml" value="0.1" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/fragment_going_on.xml" value="0.25" />

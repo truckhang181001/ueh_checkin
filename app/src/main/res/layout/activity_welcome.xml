@@ -35,6 +35,8 @@
         android:layout_height="60dp"
         android:layout_marginBottom="32dp"
         android:text="Bắt đầu ngay"
+        android:backgroundTint="@color/blue_grey_light"
+        android:textColor="@color/black"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="24dp" />

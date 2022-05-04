@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.loginAndRegister.PolicyActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Điều khoản và dịch vụ"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:text="Các Điều khoản dịch vụ này phản ánh cách thức kinh doanh của Google, những điều luật mà công ty chúng tôi phải tuân theo và một số điều mà chúng tôi vẫn luôn tin là đúng. Do đó, các Điều khoản dịch vụ này giúp xác định mối quan hệ giữa Google với bạn khi bạn tương tác với các dịch vụ của chúng tôi. Ví dụ: Các điều khoản này trình bày các chủ đề sau:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="1. Trách nhiệm của chúng tôi: Đây là phần mô tả cách chúng tôi cung cấp và phát triển các dịch vụ của mình"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="2. Trách nhiệm của bạn: Phần này nêu ra một số quy tắc mà bạn phải tuân theo khi sử dụng các dịch vụ của chúng tôi. Nội dung trong các dịch vụ của Google: Phần này mô tả quyền sở hữu trí tuệ đối với nội dung mà bạn thấy trong các dịch vụ của chúng tôi, bất kể nội dung đó thuộc về bạn, Google hay người khác"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="3. Trong trường hợp xảy ra vấn đề hoặc bất đồng: Phần này mô tả các quyền hợp pháp khác mà bạn có và những điều bạn nên biết trong trường hợp có người vi phạm các điều khoản này"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="4. Việc hiểu rõ các điều khoản này là rất quan trọng vì bằng việc sử dụng các dịch vụ của chúng tôi, bạn đồng ý với các điều khoản này."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="5. Bên cạnh các điều khoản này, chúng tôi cũng ban hành Chính sách quyền riêng tư. Mặc dù không nằm trong các điều khoản này, nhưng đây là một chính sách bạn nên đọc để hiểu rõ hơn cách bạn có thể cập nhật, quản lý, xuất và xóa thông tin của mình."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Tiếp tục đăng ký"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+    </LinearLayout>
+
+</ScrollView>
