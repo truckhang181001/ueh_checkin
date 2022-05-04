@@ -10,6 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
+            android:name=".ui.personal.SettingActivity"
+            android:label="Cài đặt hệ thống"
+            android:exported="false" />
+        <activity
+            android:name=".ui.personal.ChangePasswordActivity"
+            android:label="Thay đổi mật khẩu"
+            android:exported="false" />
+        <activity
+            android:name=".ui.personal.EditProfileActivity"
+            android:label="Cập nhật thông tin"
+            android:exported="false" />
+        <activity
+            android:name=".ui.personal.GuideAndIntroductionActivity"
+            android:label="Giới thiệu và hướng dẫn"
+            android:exported="false" />
+        <activity
             android:name=".ui.loginAndRegister.ChangePasswordSuccessActivity"
             android:exported="false" />
         <activity
