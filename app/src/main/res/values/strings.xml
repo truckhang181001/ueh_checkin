@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ueh_checkin</string>
     <string name="title_home">Home</string>
-    <string name="title_event">Event</string>
+    <string name="title_event">New Event</string>
     <string name="title_search">Search</string>
     <string name="title_personal">Personal</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -10,6 +10,7 @@
     <string name="all_fragment">All fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Đây là chỗ tạo sự kiện</string>
+
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -19,4 +20,20 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+
+    <string name="password_change_notification">Mật khẩu phải bao gồm chữ và số, không chứa năm sinh, MSSV và Tên tài khoản của bạn.</string>
+
+    <string name="guide_annd_introduction"><b>Giới thiệu UEH Check Phiên bản:</b>
+        \n\n21.01.a1
+        \n\nLà một ứng dụng được phát triển bởi nhóm sinh viên ngành Kỹ thuật phần mềm phục vụ cho sinh viên UEH ghi danh các sự kiện được thuận lợi, tiết kiệm thời gian.
+        \n\nEmail góp ý cải thiện hệ thống:
+        \n<b>uehcheck.bit@gmail.com</b>
+        \n\n<b>Hướng dẫn sử dụng:</b>
+        \n\t- Chức năng chính của UEH Check là tạo và ghi danh ở sự kiện.
+        \n\t- Sự kiện có hai loại: công khai và riêng tư. Khi tạo sự kiện riêng tư, bạn phải thêm danh sách người tham dự thông qua file excel được tải lên.
+        \n\t- File excel chỉ gồm một cột chứa email, ghi lần lượt từ trên xuống
+        \n\t- Khi ghi danh sự kiện, thiết bị của bạn cần được bật định vị, và sai số không được phép quá 100m so với định vị của sự kiện trên bản đồ.
+        \n\t- Sau khi ghi danh một sự kiện, bạn không thể ghi danh sự kiện khác. Và chỉ được ghi danh sự kiện khác sau khi sự kiện này đã kết thúc hoặc sau 120 phút kể từ khi ghi danh.</string>
+
 </resources>

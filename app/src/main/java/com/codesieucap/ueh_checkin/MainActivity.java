@@ -1,11 +1,16 @@
 package com.codesieucap.ueh_checkin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.navigation.NavController;
@@ -20,6 +25,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.codesieucap.ueh_checkin.databinding.ActivityMainBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +41,7 @@ import event.EventAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
-
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+    }
+
+    protected void fireBaseTesting(){
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        List<JoinerModel> listJoiner = new ArrayList<>();
+//        listJoiner.add(new JoinerModel(18272,"Nguyen Truc Khang","ST001","truckhang181001@gmail.com",true, "NONE","827262"));
+//        String key = mDatabase.child("Event").push().getKey();
+//        EventModel testingEvent = new EventModel(key,"123sad","Noi vong tay lon","Quan 10, HCM","12/10/2022","09:00","10:00","Mo ta chi tiet","/images/hajshsn","/img/123sfasv",listJoiner);
+//        mDatabase.child("Event").child(key).setValue(testingEvent);
+
+        FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
     }
 
 }

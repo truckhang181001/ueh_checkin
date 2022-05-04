@@ -1,6 +1,7 @@
 package com.codesieucap.ueh_checkin.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,13 +9,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codesieucap.ueh_checkin.EventModel;
 import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.databinding.FragmentHomeBinding;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,17 +39,22 @@ public class HomeFragment extends Fragment {
     private EventAdapter eventAdapter;
     // bmk
 
+    private DatabaseReference mDatabase;
+
+    private List<EventModel> listOfEvent;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //bmk
+        getDataEvent();
         recyclerViewEvent = binding.recycleviewEvent;
         eventAdapter = new EventAdapter(getActivity());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false );
         recyclerViewEvent.setLayoutManager(layoutManager);
-        eventAdapter.setData(getListEvent());
+        eventAdapter.setData(listOfEvent);
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
 
@@ -53,14 +67,35 @@ public class HomeFragment extends Fragment {
         binding = null;
     }
 
-    private List<Event> getListEvent() {
-        List<Event> list = new ArrayList<>();
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","Cơ sở N, Bình Chính"));
-        list.add(new Event(R.drawable.event1, "Lửa xuân","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả","Cơ sở N, Bình Chính"));
-        return list;
+    private void getDataEvent(){
+        listOfEvent = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Event").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                listOfEvent.add(snapshot.getValue(EventModel.class));
+                eventAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
