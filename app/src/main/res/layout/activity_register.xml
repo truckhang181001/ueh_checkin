@@ -22,6 +22,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/registerEditTextUserName"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"
             android:padding="10dp"
@@ -37,6 +38,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/registerEditTextUserEmail"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"
             android:padding="10dp"
@@ -52,6 +54,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/registerEditTextUserPassword"
             android:inputType="textPassword"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"
@@ -68,6 +71,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/registerEditTextUserPasswordCheck"
             android:inputType="textPassword"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"
@@ -80,6 +84,7 @@
             android:layout_height="wrap_content">
 
             <CheckBox
+                android:id="@+id/registerCheckBoxAgree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

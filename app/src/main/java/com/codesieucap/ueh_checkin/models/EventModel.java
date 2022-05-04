@@ -1,4 +1,4 @@
-package com.codesieucap.ueh_checkin;
+package com.codesieucap.ueh_checkin.models;
 
 import java.util.List;
 
