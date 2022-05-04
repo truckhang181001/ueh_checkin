@@ -32,6 +32,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/loginEditTextUserEmail"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"
             android:padding="10dp"
@@ -47,6 +48,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/loginEditTextUserPassword"
             android:inputType="textPassword"
             android:background="@drawable/border_radius_grey"
             android:layout_marginTop="8dp"

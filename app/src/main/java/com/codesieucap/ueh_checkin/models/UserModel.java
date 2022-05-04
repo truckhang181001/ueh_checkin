@@ -1,4 +1,4 @@
-package com.codesieucap.ueh_checkin;
+package com.codesieucap.ueh_checkin.models;
 
 public class UserModel {
     private String email, password, userName, address, avatarImgUri,idCode;

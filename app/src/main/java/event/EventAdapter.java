@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codesieucap.ueh_checkin.EventModel;
+import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.R;
 
 import java.util.List;
