@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.codesieucap.ueh_checkin.R;
+import com.codesieucap.ueh_checkin.WelcomeActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentPersonalBinding;
 
 public class PersonalFragment extends Fragment {
@@ -92,7 +93,8 @@ public class PersonalFragment extends Fragment {
         startActivity(intent);
     }
     private void logOut(){
-        Toast.makeText(getContext(), "Log out !", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), WelcomeActivity.class);
+        startActivity(intent);
     }
 
     @Override

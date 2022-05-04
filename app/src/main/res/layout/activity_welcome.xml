@@ -26,11 +26,11 @@
         android:layout_marginBottom="16dp"
         android:text="Đăng nhập"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/button_register"
+        app:layout_constraintBottom_toTopOf="@+id/button_start_now"
         tools:layout_editor_absoluteX="20dp" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/button_start_now"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="32dp"
