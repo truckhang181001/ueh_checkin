@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.codesieucap.ueh_checkin.ui.dashboard.DashboardFragment"
-        android:label="@string/title_event"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_search"
+        android:name="com.codesieucap.ueh_checkin.ui.search.SearchFragment"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.codesieucap.ueh_checkin.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_add_event"
+        android:name="com.codesieucap.ueh_checkin.ui.add_event.AddEventFragment"
+        android:label="@string/title_event"
+        tools:layout="@layout/fragment_add_event" />
+
+    <fragment
+        android:id="@+id/navigation_personal"
+        android:name="com.codesieucap.ueh_checkin.ui.personal.PersonalFragment"
         android:label="@string/title_personal"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_personal" />
 </navigation>
