@@ -4,9 +4,9 @@ public class JoinerModel {
     private Integer idCode;
     private String joinerName, className, email, ticketCode;
     private Boolean gender;
-    private Byte status;
+    private String status;
 
-    public JoinerModel(Integer idCode, String joinerName, String className, String email, Boolean gender, Byte status, String ticketCode) {
+    public JoinerModel(Integer idCode, String joinerName, String className, String email, Boolean gender, String status, String ticketCode) {
         this.idCode = idCode;
         this.joinerName = joinerName;
         this.className = className;
@@ -14,6 +14,10 @@ public class JoinerModel {
         this.gender = gender;
         this.status = status;
         this.ticketCode = ticketCode;
+    }
+
+    public JoinerModel(){
+        //default for retrieve data FireBase
     }
 
     public Integer getIdCode() {
@@ -56,11 +60,11 @@ public class JoinerModel {
         this.gender = gender;
     }
 
-    public Byte getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

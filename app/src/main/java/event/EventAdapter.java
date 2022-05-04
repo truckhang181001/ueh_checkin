@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codesieucap.ueh_checkin.EventModel;
 import com.codesieucap.ueh_checkin.R;
 
 import java.util.List;
@@ -17,13 +18,13 @@ import java.util.List;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder>{
 
     private Context mContext;
-    private List<Event> eventList;
+    private List<EventModel> eventList;
 
     public EventAdapter(Context mContext) {
         this.mContext = mContext;
     }
 
-    public void setData(List<Event> list){
+    public void setData(List<EventModel> list){
         this.eventList = list;
         notifyDataSetChanged();
     }
@@ -37,12 +38,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
-        Event event = eventList.get(position);
+        EventModel event = eventList.get(position);
         if (event == null){
             return;
         }
-        holder.imgEvent.setImageResource(event.getEventId());
-        holder.tvName.setText(event.getName());
+        holder.imgEvent.setImageResource(R.drawable.event1);
+        holder.tvName.setText(event.getEventName());
         holder.tvAddress.setText(event.getAddress());
     }
 

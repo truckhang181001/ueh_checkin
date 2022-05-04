@@ -1,11 +1,11 @@
 package com.codesieucap.ueh_checkin;
 
 public class UserModel {
-    private String email, password, userName, address, avatarImgUri;
+    private String email, password, userName, address, avatarImgUri,idCode;
     private Boolean gender;
-    private Integer idCode,phone;
+    private Integer phone;
 
-    public UserModel(Integer idCode,String email, String password, String userName, String address, Boolean gender, Integer phone, String avatarImgUri) {
+    public UserModel(String idCode,String email, String password, String userName, String address, Boolean gender, Integer phone, String avatarImgUri) {
         this.idCode = idCode;
         this.email = email;
         this.password = password;
@@ -14,6 +14,10 @@ public class UserModel {
         this.gender = gender;
         this.phone = phone;
         this.avatarImgUri = avatarImgUri;
+    }
+
+    public UserModel(){
+        //default for retrieve data FireBase
     }
 
     public String getEmail() {
@@ -64,11 +68,11 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public Integer getIdCode() {
+    public String getIdCode() {
         return idCode;
     }
 
-    public void setIdCode(Integer id) {
+    public void setIdCode(String id) {
         this.idCode = id;
     }
 

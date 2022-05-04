@@ -1,12 +1,15 @@
 package com.codesieucap.ueh_checkin;
 
-public class EventModel {
-    private Integer idCode;
-    private String eventName, address, date, startTime, endTime, detail, avatarImgUri, coverImgUri;
-    private JoinerModel[] listJoiner;
+import java.util.List;
 
-    public EventModel(Integer idCode, String eventName, String address, String date, String startTime, String endTime, String detail, String avatarImgUri, String coverImgUri, JoinerModel[] listJoiner) {
+public class EventModel {
+    private String idCode, idUser;
+    private String eventName, address, date, startTime, endTime, detail, avatarImgUri, coverImgUri;
+    private List<JoinerModel> listJoiner;
+
+    public EventModel(String idCode, String idUser, String eventName, String address, String date, String startTime, String endTime, String detail, String avatarImgUri, String coverImgUri, List<JoinerModel> listJoiner) {
         this.idCode = idCode;
+        this.idUser = idUser;
         this.eventName = eventName;
         this.address = address;
         this.date = date;
@@ -18,11 +21,15 @@ public class EventModel {
         this.listJoiner = listJoiner;
     }
 
-    public Integer getIdCode() {
+    public EventModel(){
+        //default for retrieve data FireBase
+    }
+
+    public String getIdCode() {
         return idCode;
     }
 
-    public void setIdCode(Integer id) {
+    public void setIdCode(String id) {
         this.idCode = id;
     }
 
@@ -90,11 +97,19 @@ public class EventModel {
         this.coverImgUri = coverImgUri;
     }
 
-    public JoinerModel[] getListJoiner() {
+    public List<JoinerModel> getListJoiner() {
         return listJoiner;
     }
 
-    public void setListJoiner(JoinerModel[] listJoiner) {
+    public void setListJoiner(List<JoinerModel> listJoiner) {
         this.listJoiner = listJoiner;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

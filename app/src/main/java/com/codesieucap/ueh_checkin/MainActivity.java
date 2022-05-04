@@ -5,6 +5,8 @@ import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        fireBaseTesting();
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -63,7 +63,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void fireBaseTesting(){
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//        List<JoinerModel> listJoiner = new ArrayList<>();
+//        listJoiner.add(new JoinerModel(18272,"Nguyen Truc Khang","ST001","truckhang181001@gmail.com",true, "NONE","827262"));
+//        String key = mDatabase.child("Event").push().getKey();
+//        EventModel testingEvent = new EventModel(key,"123sad","Noi vong tay lon","Quan 10, HCM","12/10/2022","09:00","10:00","Mo ta chi tiet","/images/hajshsn","/img/123sfasv",listJoiner);
+//        mDatabase.child("Event").child(key).setValue(testingEvent);
+
+        FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance();
     }
 
 }
