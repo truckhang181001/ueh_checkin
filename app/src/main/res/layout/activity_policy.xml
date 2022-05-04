@@ -63,7 +63,8 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:text="Tiếp tục đăng ký"
+            android:id="@+id/button_contined_register"
+            android:text="Tôi đã hiểu và đồng ý"
             android:textAllCaps="false"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"

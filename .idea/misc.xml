@@ -24,21 +24,20 @@
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.20625" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout-w936dp/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_change_password_success.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_event_detail.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password1.xml" value="0.25" />
-        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password2.xml" value="0.25" />
+        <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password2.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_foget_password3.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_guide_and_introduction.xml" value="0.1" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_main2.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_password_change_success.xml" value="0.25" />
-
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_policy.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_register_success.xml" value="0.25" />
-
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/activity_welcome.xml" value="0.264" />

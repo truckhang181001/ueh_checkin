@@ -12,17 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:text="Đăng ký tài khoản"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
         <TextView
             android:text="Tên đăng nhập"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="60dp"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,6 +84,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/textview_agree_with_policy"
                 android:text="Đồng ý với điều khoản và dịch vụ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -98,6 +92,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/button_confirm_register"
             android:text="Đăng ký"
             android:textAllCaps="false"
             android:layout_gravity="center"
