@@ -1,23 +1,25 @@
 package com.codesieucap.ueh_checkin.models;
 
 public class UserModel {
-    private String email, password, userName, address, avatarImgUri,idCode;
-    private Boolean gender;
-    private Integer phone;
+    private String idCode,email,userName,avatarImgUri;
 
-    public UserModel(String idCode,String email, String password, String userName, String address, Boolean gender, Integer phone, String avatarImgUri) {
+    public UserModel(String idCode, String email, String userName, String avatarImgUri) {
         this.idCode = idCode;
         this.email = email;
-        this.password = password;
         this.userName = userName;
-        this.address = address;
-        this.gender = gender;
-        this.phone = phone;
         this.avatarImgUri = avatarImgUri;
     }
 
     public UserModel(){
         //default for retrieve data FireBase
+    }
+
+    public String getIdCode() {
+        return idCode;
+    }
+
+    public void setIdCode(String idCode) {
+        this.idCode = idCode;
     }
 
     public String getEmail() {
@@ -28,52 +30,12 @@ public class UserModel {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String name) {
-        this.userName = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(Boolean gender) {
-        this.gender = gender;
-    }
-
-    public Integer getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
-
-    public String getIdCode() {
-        return idCode;
-    }
-
-    public void setIdCode(String id) {
-        this.idCode = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getAvatarImgUri() {
