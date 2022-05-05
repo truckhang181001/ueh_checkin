@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.databinding.FragmentHomeBinding;
+import com.codesieucap.ueh_checkin.models.UserModel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment {
 
     //View items
     private TextView textViewUserName;
+    private ImageView imageViewUserAvatar;
 
 
     private List<EventModel> listOfEvent;
@@ -51,6 +55,9 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         textViewUserName = binding.textviewUserName;
+        imageViewUserAvatar = binding.avatarUser;
+
+        getAccount();
 
         //bmk
         getDataEvent();
@@ -61,8 +68,6 @@ public class HomeFragment extends Fragment {
         eventAdapter.setData(listOfEvent);
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
-
-        getAccount();
 
         return root;
     }
@@ -86,6 +91,35 @@ public class HomeFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 listOfEvent.add(snapshot.getValue(EventModel.class));
                 eventAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        mDatabase.child("User").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                UserModel user = snapshot.getValue(UserModel.class);
+                if(mSharePreferences.getString("userId","").equals(user.getIdCode())){
+                    Picasso.get().load(user.getAvatarImgUri()).into(imageViewUserAvatar);
+                }
             }
 
             @Override

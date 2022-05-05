@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             mSharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
                             SharedPreferences.Editor editor = mSharedPreferences.edit();
-                            editor.putString("userEmail",user.getEmail());
+                            editor.putString("userName",user.getEmail());
                             editor.putString("userId",user.getUid());
                             editor.commit();
 
