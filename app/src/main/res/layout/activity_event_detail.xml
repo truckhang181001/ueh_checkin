@@ -135,7 +135,7 @@
             tools:layout_editor_absoluteX="10dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_manage_list_participant"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginStart="20dp"
