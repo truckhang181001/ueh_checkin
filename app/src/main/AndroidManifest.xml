@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
-            android:name=".ParticipantListActivity"
+            android:name=".ui.participant.ParticipantListActivity"
+            android:label="Danh sách người tham dự"
             android:exported="false" />
         <activity
             android:name=".ui.personal.SettingActivity"
