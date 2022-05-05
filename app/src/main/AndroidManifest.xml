@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codesieucap.ueh_checkin">
-    
-    <uses-permission-sdk-23 android:name="android.permission.CAMERA"/>
-    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
+    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,21 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
-            android:name=".ui.personal.SettingActivity"
-            android:label="Cài đặt hệ thống"
+            android:name=".ParticipantListActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.personal.SettingActivity"
+            android:exported="false"
+            android:label="Cài đặt hệ thống" />
         <activity
             android:name=".ui.personal.ChangePasswordActivity"
-            android:label="Thay đổi mật khẩu"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Thay đổi mật khẩu" />
         <activity
             android:name=".ui.personal.EditProfileActivity"
-            android:label="Cập nhật thông tin"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Cập nhật thông tin" />
         <activity
             android:name=".ui.personal.GuideAndIntroductionActivity"
-            android:label="Giới thiệu và hướng dẫn"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Giới thiệu và hướng dẫn" />
         <activity
             android:name=".ui.loginAndRegister.ChangePasswordSuccessActivity"
             android:exported="false" />
@@ -66,7 +69,8 @@
             android:parentActivityName=".WelcomeActivity" />
         <activity
             android:name=".EventDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Thông tin sự kiện" />
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"

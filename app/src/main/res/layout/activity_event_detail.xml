@@ -27,18 +27,14 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView_eventCover"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/icon_date"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/ic_baseline_event_24"/>
-
             <TextView
+                android:text="08/05/2022"
                 android:id="@+id/textView_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="08/05/2022"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:drawableStart="@drawable/ic_baseline_event_24"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -50,18 +46,14 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView_eventCover"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageView
-                android:id="@+id/icon_time"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/ic_baseline_event_24" />
-
             <TextView
+                android:text="21:00"
                 android:id="@+id/textView_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="17:00 đến 21:00"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:drawableStart="@drawable/ic_baseline_access_time_24"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -70,7 +62,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:weightSum="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_eventCover"
@@ -80,38 +74,31 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
-                android:text="Le hoi truyen thong Suc Tre Kinh Te"
+                android:text="Suc Tre Kinh Te"
+                android:textStyle="bold"
                 android:textSize="30sp" />
 
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:src="@drawable/ic_baseline_event_24" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/main_purple"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:background="@drawable/border_radius_blue"
             android:padding="10dp"
-            android:weightSum="10"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                app:srcCompat="@drawable/ic_baseline_event_24"
-                app:tint="@color/white" />
-
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8"
+                android:layout_gravity="center"
+                android:textSize="18sp"
                 android:text="279 Nguyen Tri Phuong, Phuong 14, Quan 10"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -119,7 +106,8 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="20dp"
             android:textSize="20sp"
             android:textStyle="bold"
             android:text="Thông tin sự kiện"
@@ -127,11 +115,14 @@
             tools:layout_editor_absoluteX="101dp" />
 
         <TextView
-            android:background="@color/main_grey"
+            android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:padding="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_radius_grey"
+            android:padding="10dp"
             android:text="✨ NGÀY HỘI SỨC TRẺ KINH TẾ: UEH YOUTH FESTIVAL 2022 - VỮNG BƯỚC HƯỚNG VỀ TƯƠNG LAI ✨
 🤗 Dù UEH Youth Festival 2022 đã đi qua nhưng những giá trị mà chương trình để lại vẫn sẽ còn ở đó. Khi đặt chân đến với “Tiếu vương quốc Bình Chánh” thì có lẽ Ngày hội UEH Youth Festival 2022 đã để lại ấn tượng sâu sắc và những kỉ niệm đáng nhớ với các bạn sinh viên đúng không nào?
 🎆 Với sự tham gia của hơn 30 Đoàn - Hội Khoa/Viện/KTX và CLB/Đội/Nhóm đã góp phần giúp cho Ngày hội trở thành một bữa tiệc đa sắc màu. Ngoài những trải nghiệm công nghệ thông qua các miền không gian ảo, UEH Youth Festival 2022 còn mang đến những tiết mục được đầu tư kỹ lưỡng về cả phần nghe lẫn phần nhìn.
@@ -141,9 +132,38 @@
 #ThangThanhnien2022 #InnovativeVersionUEH
 #ĐTN_HSV #YouthUEH #UEH #BPT"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="10dp" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:text="Quản lý danh sách"
+            android:textAllCaps="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="40dp"
+            android:text="Check in"
+            android:textAllCaps="false"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <Button
+            android:text="Danh sách đã Check in"
+            android:textAllCaps="false"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
