@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -18,6 +19,11 @@ import com.codesieucap.ueh_checkin.MainActivity;
 import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.WelcomeActivity;
 import com.codesieucap.ueh_checkin.models.UserModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,14 +35,13 @@ public class LoginActivity extends AppCompatActivity {
     private TextView foget_password;
     private EditText userEmail, userPassword;
     private Button login_into_app;
-    private DatabaseReference mDatabase;
+    private SharedPreferences mSharedPreferences;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         login_into_app = findViewById(R.id.button_login_into_app);
         foget_password = findViewById(R.id.textview_foget_password);
@@ -66,38 +71,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginProcess() {
-        mDatabase.child("User").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                UserModel user = snapshot.getValue(UserModel.class);
-                if(userEmail.getText().toString().equals(user.getEmail()) && userPassword.getText().toString().equals(user.getPassword())){
-                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    // Trường hợp đăng nhập bị lỗi
-                }
-            }
+        String email = userEmail.getText().toString();
+        String password = userPassword.getText().toString();
+        Log.d("TRUCKHANG","TEST");
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            FirebaseUser user = mAuth.getCurrentUser();
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                            mSharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = mSharedPreferences.edit();
+                            editor.putString("userEmail",user.getEmail());
+                            editor.putString("userId",user.getUid());
+                            editor.commit();
 
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
     }
 }

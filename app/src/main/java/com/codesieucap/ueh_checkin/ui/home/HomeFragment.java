@@ -1,9 +1,12 @@
 package com.codesieucap.ueh_checkin.ui.home;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,14 +35,22 @@ public class HomeFragment extends Fragment {
     private EventAdapter eventAdapter;
     // bmk
 
+    //Data
     private DatabaseReference mDatabase;
+    private SharedPreferences mSharePreferences;
+
+    //View items
+    private TextView textViewUserName;
+
 
     private List<EventModel> listOfEvent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        //Mapping
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        textViewUserName = binding.textviewUserName;
 
         //bmk
         getDataEvent();
@@ -51,6 +62,8 @@ public class HomeFragment extends Fragment {
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
 
+        getAccount();
+
         return root;
     }
 
@@ -58,6 +71,11 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void getAccount(){
+        mSharePreferences = getActivity().getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
+        textViewUserName.setText("Hello, " + mSharePreferences.getString("userEmail",""));
     }
 
     private void getDataEvent(){
