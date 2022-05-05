@@ -1,12 +1,12 @@
 package com.codesieucap.ueh_checkin.models;
 
 public class JoinerModel {
-    private Integer idCode;
+    private String idCode;
     private String joinerName, className, email, ticketCode;
-    private Boolean gender;
+    private String gender;
     private String status;
 
-    public JoinerModel(Integer idCode, String joinerName, String className, String email, Boolean gender, String status, String ticketCode) {
+    public JoinerModel(String idCode, String joinerName, String className, String email, String gender, String status, String ticketCode) {
         this.idCode = idCode;
         this.joinerName = joinerName;
         this.className = className;
@@ -20,11 +20,11 @@ public class JoinerModel {
         //default for retrieve data FireBase
     }
 
-    public Integer getIdCode() {
+    public String getIdCode() {
         return idCode;
     }
 
-    public void setIdCode(Integer id) {
+    public void setIdCode(String id) {
         this.idCode = id;
     }
 
@@ -52,11 +52,11 @@ public class JoinerModel {
         this.email = email;
     }
 
-    public Boolean getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

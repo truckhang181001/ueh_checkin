@@ -172,15 +172,19 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void startRegisterSuccessActivity() {
         mAuth = FirebaseAuth.getInstance();
+
         String email = userEmail.getText().toString();
         String password = userPassword.getText().toString();
+
         if(validateRegister()){
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                //Upload Image and get Link of image to add account into Realtime DB
                                 uploadImage(avatarUri);
+                                //Intent
                                 Intent intent = new Intent(RegisterActivity.this, RegisterSuccessActivity.class);
                                 startActivity(intent);
                             }

@@ -1,23 +1,20 @@
 package com.codesieucap.ueh_checkin.ui.loginAndRegister;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.codesieucap.ueh_checkin.MainActivity;
 import com.codesieucap.ueh_checkin.R;
-import com.codesieucap.ueh_checkin.WelcomeActivity;
 import com.codesieucap.ueh_checkin.models.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,11 +29,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
 
+    //View items
     private TextView foget_password;
     private EditText userEmail, userPassword;
     private Button login_into_app;
+
     private SharedPreferences mSharedPreferences;
     private FirebaseAuth mAuth;
+    private DatabaseReference mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginProcess() {
         String email = userEmail.getText().toString();
         String password = userPassword.getText().toString();
-        Log.d("TRUCKHANG","TEST");
+
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -82,14 +82,46 @@ public class LoginActivity extends AppCompatActivity {
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
 
+                            //Authentication
                             mSharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
                             SharedPreferences.Editor editor = mSharedPreferences.edit();
-                            editor.putString("userName",user.getEmail());
                             editor.putString("userId",user.getUid());
-                            editor.commit();
 
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            mData = FirebaseDatabase.getInstance().getReference();
+                            mData.child("User").addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    UserModel userDB = snapshot.getValue(UserModel.class);
+                                    if(user.getUid().equals(userDB.getIdCode())){
+                                        editor.putString("userName",userDB.getUserName());
+                                        editor.putString("userAvatar",userDB.getAvatarImgUri());
+                                        editor.commit();
+
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 });

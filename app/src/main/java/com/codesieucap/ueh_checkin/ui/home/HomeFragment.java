@@ -15,9 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.databinding.FragmentHomeBinding;
-import com.codesieucap.ueh_checkin.models.UserModel;
+import com.codesieucap.ueh_checkin.models.EventModel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -80,46 +79,20 @@ public class HomeFragment extends Fragment {
 
     private void getAccount(){
         mSharePreferences = getActivity().getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
-        textViewUserName.setText("Hello, " + mSharePreferences.getString("userEmail",""));
+        String userNamePref = mSharePreferences.getString("userName","");
+        String userAvatarPref = mSharePreferences.getString("userAvatar","");
+        textViewUserName.setText("Hello, " + userNamePref);
+        Picasso.get().load(userAvatarPref).into(imageViewUserAvatar);
     }
 
     private void getDataEvent(){
-        listOfEvent = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        listOfEvent = new ArrayList<>();
         mDatabase.child("Event").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 listOfEvent.add(snapshot.getValue(EventModel.class));
                 eventAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        mDatabase.child("User").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                UserModel user = snapshot.getValue(UserModel.class);
-                if(mSharePreferences.getString("userId","").equals(user.getIdCode())){
-                    Picasso.get().load(user.getAvatarImgUri()).into(imageViewUserAvatar);
-                }
             }
 
             @Override

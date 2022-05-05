@@ -143,20 +143,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:gravity="center"
+        <EditText
+            android:id="@+id/editTextGoogleSheet"
             android:background="@drawable/border_radius_grey"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <ImageView
-                android:src="@drawable/ic_baseline_file_upload_50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
         <Button
+            android:id="@+id/buttonCreateEvent"
             android:text="Tạo sự kiện"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"
