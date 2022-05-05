@@ -14,10 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
-            android:name=".ui.participant.ParticipantCheckedinActivity"
-            android:label="Danh sách đã Check in"
-            android:parentActivityName=".EventDetailActivity"
+            android:name=".ui.scanQRcode.ScanFailActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.scanQRcode.ScanSuccessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.participant.ParticipantCheckedinActivity"
+            android:exported="false"
+            android:label="Danh sách đã Check in"
+            android:parentActivityName=".EventDetailActivity" />
         <activity
             android:name=".ui.participant.AddParticipantListActivity"
             android:exported="false"
@@ -36,8 +42,8 @@
         <activity
             android:name=".ui.participant.ParticipantListActivity"
             android:exported="false"
-            android:parentActivityName=".EventDetailActivity"
-            android:label="Danh sách người tham dự" />
+            android:label="Danh sách người tham dự"
+            android:parentActivityName=".EventDetailActivity" />
         <activity
             android:name=".ui.personal.SettingActivity"
             android:exported="false"
