@@ -1,10 +1,16 @@
 package com.codesieucap.ueh_checkin.readGoogleSheet;
 
-import android.os.AsyncTask;
-import android.support.annotation.Nullable;
-import android.util.Log;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,12 +20,21 @@ import java.util.List;
 
 public class GetDataTask extends AsyncTask<Void, Void, Void> {
 
+    ProgressDialog dialog;
     int jIndex;
     int x;
     private List<JoinerModel> list;
+    private String sheetURL;
+    private Context context;
+    private EventModel eventItem;
+    private DatabaseReference mDatabase;
 
-    public GetDataTask(List<JoinerModel> list) {
+
+    public GetDataTask(Context context, List<JoinerModel> list, String sheetURL, EventModel eventItem) {
         this.list = list;
+        this.sheetURL = sheetURL;
+        this.context = context;
+        this.eventItem = eventItem;
     }
 
     @Override
@@ -35,16 +50,21 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
             jIndex=0;
         else
             jIndex=x;
+
+        dialog = new ProgressDialog(context);
+        dialog.setTitle("Hey Wait Please..."+x);
+        dialog.setMessage("I am getting your JSON");
+        dialog.show();
     }
 
-    @Nullable
+    @android.support.annotation.Nullable
     @Override
     protected Void doInBackground(Void... params) {
 
         /**
          * Getting JSON Object from Web Using okHttp
          */
-        JSONObject jsonObject = JSONParser.getDataFromWeb();
+        JSONObject jsonObject = new JSONParser(sheetURL).getDataFromWeb();
 
         try {
             /**
@@ -122,5 +142,21 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    @Override
+    protected void onPostExecute(Void unused) {
+        super.onPostExecute(unused);
+        dialog.dismiss();
+        /**
+         * Checking if List size if more than zero then
+         * Update ListView
+         */
+        if(list.size() > 0) {
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mDatabase.child("Event").child(eventItem.getIdCode()).setValue(eventItem);
+            Toast.makeText(context, "Upload dữ liệu thành công",Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(context, "Đã có lỗi, vui lòng thử lại",Toast.LENGTH_LONG).show();
+        }
+    }
 }
-

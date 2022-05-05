@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class JSONParser {
 
-    private static final String MAIN_URL = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1QKr6xmdBtpLxX33LAx_ipp_qtIy4-zBIc_v6qrXTi6I&sheet=Sheet1";
+    private static String MAIN_URL;
 
     public static final String TAG = "TAG";
 
@@ -25,7 +25,11 @@ public class JSONParser {
 
     private static Response response;
 
-    public static JSONObject getDataFromWeb() {
+    public JSONParser(String sheetURL){
+        MAIN_URL = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id="+sheetURL+"&sheet=Sheet1";
+    }
+
+    public JSONObject getDataFromWeb() {
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -61,4 +65,6 @@ public class JSONParser {
         }
         return null;
     }
+
+
 }
