@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codesieucap.ueh_checkin">
-    <uses-permission-sdk-23 android:name="android.permission.CAMERA"/>
-    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission-sdk-23 android:name="android.permission.INTERNET"/>
+
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
+    <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,9 +14,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ueh_checkin">
         <activity
-            android:name=".ui.participant.ParticipantListActivity"
-            android:label="Danh sách người tham dự"
+            android:name=".ui.participant.ParticipantCheckedinActivity"
+            android:label="Danh sách đã Check in"
+            android:parentActivityName=".EventDetailActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.participant.AddParticipantListActivity"
+            android:exported="false"
+            android:label="Thêm danh sách người tham gia"
+            android:parentActivityName=".ui.participant.ParticipantListActivity" />
+        <activity
+            android:name=".ui.participant.AddParticipantActivity"
+            android:exported="false"
+            android:label="Thêm người tham dự"
+            android:parentActivityName=".ui.participant.ParticipantListActivity" />
+        <activity
+            android:name=".ui.participant.InfoParticipantActivity"
+            android:exported="false"
+            android:label="Thông tin người tham dự"
+            android:parentActivityName=".ui.participant.ParticipantListActivity" />
+        <activity
+            android:name=".ui.participant.ParticipantListActivity"
+            android:exported="false"
+            android:parentActivityName=".EventDetailActivity"
+            android:label="Danh sách người tham dự" />
         <activity
             android:name=".ui.personal.SettingActivity"
             android:exported="false"

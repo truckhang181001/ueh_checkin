@@ -156,6 +156,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
+            android:id="@+id/list_participant_checked_in"
             android:text="Danh sách đã Check in"
             android:textAllCaps="false"
             android:layout_marginTop="120dp"
