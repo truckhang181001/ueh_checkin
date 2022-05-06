@@ -1,11 +1,13 @@
 package com.codesieucap.ueh_checkin;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +16,11 @@ import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.ui.participant.ParticipantCheckedinActivity;
 import com.codesieucap.ueh_checkin.ui.participant.ParticipantListActivity;
 import com.codesieucap.ueh_checkin.ui.scanQRcode.ScanningActivity;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.normal.TedPermission;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class EventDetailActivity extends AppCompatActivity {
 
@@ -73,8 +79,7 @@ public class EventDetailActivity extends AppCompatActivity {
         btnCheckin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EventDetailActivity.this, ScanningActivity.class);
-                startActivity(intent);
+                getPermissionCamera();
             }
         });
     }
@@ -89,5 +94,26 @@ public class EventDetailActivity extends AppCompatActivity {
         Intent intent = new Intent(EventDetailActivity.this, ParticipantListActivity.class);
         intent.putExtra("eventData",eventItem);
         startActivity(intent);
+    }
+
+    private void getPermissionCamera(){
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                Intent intent = new Intent(EventDetailActivity.this, ScanningActivity.class);
+                intent.putExtra("eventData",eventItem);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(EventDetailActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
+        TedPermission.create()
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(Manifest.permission.CAMERA)
+                .check();
     }
 }

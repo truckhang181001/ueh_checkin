@@ -1,28 +1,37 @@
 package com.codesieucap.ueh_checkin.ui.scanQRcode;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.databinding.ActivityScanningBinding;
+import com.codesieucap.ueh_checkin.models.EventModel;
+import com.codesieucap.ueh_checkin.models.JoinerModel;
 import com.google.zxing.Result;
 
 public class ScanningActivity extends AppCompatActivity {
 
     private ActivityScanningBinding binding;
     private CodeScanner mCodeScanner;
+    private EventModel eventItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityScanningBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Intent intent = getIntent();
+        eventItem = (EventModel) intent.getSerializableExtra("eventData");
 
 
         CodeScannerView scannerView = binding.scannerView;
@@ -33,17 +42,58 @@ public class ScanningActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(ScanningActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        Boolean checkVerify = false;
+
+
+                        ProgressDialog progressDialog = new ProgressDialog(ScanningActivity.this);
+                        progressDialog.setTitle("XÁC THỰC");
+                        progressDialog.setMessage("Đang kiểm tra dữ liệu, xin vui lòng đợi...");
+                        progressDialog.show();
+
+                        for(JoinerModel item : eventItem.getListJoiner()){
+                            if(item.getTicketCode().equals(result.getText())){
+                                checkVerify = true;
+                                progressDialog.dismiss();
+                                AlertDialog.Builder alertDialog = new AlertDialog.Builder(ScanningActivity.this);
+                                alertDialog.setTitle("UEH CHECKIN");
+                                alertDialog.setIcon(R.drawable.success_icon);
+                                alertDialog.setMessage("Mã định danh: "+item.getIdCode() +
+                                        "\nHọ và tên: "+item.getJoinerName());
+                                alertDialog.setNeutralButton("Tiếp tục", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        mCodeScanner.startPreview();
+                                    }
+                                });
+                                alertDialog.show();
+                                break;
+                            }
+                        }
+
+                        if(!checkVerify){
+                            progressDialog.dismiss();
+                            AlertDialog.Builder alertDialogB = new AlertDialog.Builder(ScanningActivity.this);
+                            alertDialogB.setTitle("UEH CHECKIN");
+                            alertDialogB.setIcon(R.drawable.fail_icon);
+                            alertDialogB.setMessage("Mã QR không hợp lệ, xin vui lòng thử lại!");
+                            alertDialogB.setNeutralButton("Tiếp tục", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    mCodeScanner.startPreview();
+                                }
+                            });
+                            alertDialogB.show();
+                        }
                     }
                 });
             }
         });
-        scannerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mCodeScanner.startPreview();
-            }
-        });
+//        scannerView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                mCodeScanner.startPreview();
+//            }
+//        });
     }
     @Override
     protected void onResume() {
