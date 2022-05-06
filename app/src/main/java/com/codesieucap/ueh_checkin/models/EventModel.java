@@ -1,8 +1,9 @@
 package com.codesieucap.ueh_checkin.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class EventModel {
+public class EventModel implements Serializable {
     private String idCode, idUser;
     private String eventName, address, date, startTime, endTime, detail, avatarImgUri, coverImgUri;
     private List<JoinerModel> listJoiner;

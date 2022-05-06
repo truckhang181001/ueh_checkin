@@ -1,6 +1,7 @@
 package com.codesieucap.ueh_checkin.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codesieucap.ueh_checkin.EventDetailActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentHomeBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.google.firebase.database.ChildEventListener;
@@ -61,10 +63,17 @@ public class HomeFragment extends Fragment {
         //bmk
         getDataEvent();
         recyclerViewEvent = binding.recycleviewEvent;
-        eventAdapter = new EventAdapter(getActivity());
+        eventAdapter = new EventAdapter(getActivity(), listOfEvent, new EventAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(EventModel item) {
+                Intent intent = new Intent(getActivity(), EventDetailActivity.class);
+                intent.putExtra("eventData",item);
+                startActivity(intent);
+
+            }
+        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false );
         recyclerViewEvent.setLayoutManager(layoutManager);
-        eventAdapter.setData(listOfEvent);
         recyclerViewEvent.setAdapter(eventAdapter);
         //bmk
 

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".EventDetailActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,7 +30,7 @@
 
             <TextView
                 android:text="08/05/2022"
-                android:id="@+id/textView_date"
+                android:id="@+id/textViewEventDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -48,7 +49,7 @@
 
             <TextView
                 android:text="21:00"
-                android:id="@+id/textView_time"
+                android:id="@+id/textViewEventTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
@@ -71,6 +72,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/textViewEventName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
@@ -91,6 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <TextView
+                android:id="@+id/textViewEventAddress"
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:text="279 Nguyen Tri Phuong, Phuong 14, Quan 10"
@@ -115,7 +118,7 @@
             tools:layout_editor_absoluteX="101dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textViewEventDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -143,7 +146,7 @@
             android:text="Quản lý danh sách"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewEventDetail" />
 
         <Button
             android:layout_width="150dp"
@@ -153,7 +156,7 @@
             android:textAllCaps="false"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewEventDetail" />
 
         <Button
             android:id="@+id/list_participant_checked_in"
@@ -162,7 +165,7 @@
             android:layout_marginTop="120dp"
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textViewEventDetail"
             android:layout_width="wrap_content"
             android:layout_height="60dp"/>
 

@@ -1,6 +1,8 @@
 package com.codesieucap.ueh_checkin.models;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
     private String idCode,email,userName,avatarImgUri;
 
     public UserModel(String idCode, String email, String userName, String avatarImgUri) {

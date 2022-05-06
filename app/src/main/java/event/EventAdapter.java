@@ -18,17 +18,20 @@ import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder>{
 
+    public interface OnItemClickListener{
+        void onItemClick(EventModel item);
+    }
+
     private Context mContext;
     private List<EventModel> eventList;
+    private OnItemClickListener listener;
 
-    public EventAdapter(Context mContext) {
+    public EventAdapter(Context mContext, List<EventModel> eventList, OnItemClickListener listener) {
+        this.eventList = eventList;
         this.mContext = mContext;
+        this.listener = listener;
     }
 
-    public void setData(List<EventModel> list){
-        this.eventList = list;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -43,9 +46,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         if (event == null){
             return;
         }
-        Picasso.get().load(event.getAvatarImgUri()).into(holder.imgEvent);
-        holder.tvName.setText(event.getEventName());
-        holder.tvAddress.setText(event.getAddress());
+        holder.bind(event,listener);
     }
 
     @Override
@@ -67,6 +68,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             imgEvent = itemView.findViewById(R.id.img_event);
             tvName = itemView.findViewById(R.id.name_event);
             tvAddress = itemView.findViewById(R.id.address_event);
+        }
+
+        public void bind(final EventModel item, final OnItemClickListener listener) {
+            Picasso.get().load(item.getAvatarImgUri()).into(imgEvent);
+            tvName.setText(item.getEventName());
+            tvAddress.setText(item.getAddress());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

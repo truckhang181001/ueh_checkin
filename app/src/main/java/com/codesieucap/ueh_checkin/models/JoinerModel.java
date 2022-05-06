@@ -1,8 +1,9 @@
 package com.codesieucap.ueh_checkin.models;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class JoinerModel {
+public class JoinerModel implements Serializable {
     private String idCode;
     private String joinerName, className, email, ticketCode;
     private String gender;
