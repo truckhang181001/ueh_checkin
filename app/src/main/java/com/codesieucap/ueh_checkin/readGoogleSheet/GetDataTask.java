@@ -94,7 +94,6 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * and
                              * Adding into List
                              */
-                            JoinerModel model = new JoinerModel();
 
                             /**
                              * Getting Inner Object from contacts array...
@@ -104,9 +103,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
                              */
                             JSONObject innerObject = array.getJSONObject(jIndex);
                             String studentID = innerObject.getString(Keys.KEY_STUDENTID);
-                            Log.d("TRUCKHANG", studentID);
                             String name = innerObject.getString(Keys.KEY_NAME);
-                            Log.d("TRUCKHANG", name);
                             String className = innerObject.getString(Keys.KEY_CLASSNAME);
                             String email = innerObject.getString(Keys.KEY_EMAIL);
                             String gender = innerObject.getString(Keys.KEY_GENDER);
@@ -117,11 +114,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
                             //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
                             //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
-                            model.setEmail(email);
-                            model.setJoinerName(name);
-                            model.setIdCode(studentID);
-                            model.setClassName(className);
-                            model.setGender(gender);
+                            JoinerModel model = new JoinerModel(studentID,name,className,email,gender);
 
 
                             /**

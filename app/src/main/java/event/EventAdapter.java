@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         if (event == null){
             return;
         }
-        holder.imgEvent.setImageResource(R.drawable.event1);
+        Picasso.get().load(event.getAvatarImgUri()).into(holder.imgEvent);
         holder.tvName.setText(event.getEventName());
         holder.tvAddress.setText(event.getAddress());
     }

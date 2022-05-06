@@ -1,98 +1,118 @@
 package com.codesieucap.ueh_checkin.ui.search;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.codesieucap.ueh_checkin.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.codesieucap.ueh_checkin.databinding.FragmentHappeningBinding;
+import com.codesieucap.ueh_checkin.models.EventModel;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import event.Event;
 import event.SearchEventAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HappeningFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HappeningFragment extends Fragment {
+    private FragmentHappeningBinding binding;
+    private DatabaseReference mDatabase;
+    private SharedPreferences mSharedPreferences;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HappeningFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HappeningFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HappeningFragment newInstance(String param1, String param2) {
-        HappeningFragment fragment = new HappeningFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    private List<EventModel> listEvent;
 
     private RecyclerView rcvEvent;
-    private View mView;
+    private SearchEventAdapter eventAdapter;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.fragment_happening, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentHappeningBinding.inflate(inflater,container,false);
+        View root = binding.getRoot();
 
-        rcvEvent = mView.findViewById(R.id.recycleview_happening);
+        rcvEvent = binding.recycleviewHappening;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcvEvent.setLayoutManager(layoutManager);
 
-        SearchEventAdapter eventAdapter = new SearchEventAdapter();
-        eventAdapter.setData(getResultSearch());
+        getResultSearch();
+        eventAdapter = new SearchEventAdapter();
+        eventAdapter.setData(listEvent);
 
         rcvEvent.setAdapter(eventAdapter);
-        return mView;
+
+        return root;
+
     }
 
-    private List<Event> getResultSearch() {
-        List<Event> list = new ArrayList<>();
-        list.add(new Event(R.drawable.event1, "Lửa xuân", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.","Cơ sở N, Bình Chính"));
-        list.add(new Event(R.drawable.event1, "Lửa xuân","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.", "279, Nguyễn Tri Phương"));
-        list.add(new Event(R.drawable.event2, "Nối vòng tay lớn","Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả", "59C, Nguyễn Đình Chiểu"));
-        list.add(new Event(R.drawable.event3, "Sức trẻ kinh tế", "Rừng núi dang tay lại biển xa. Ta đi vòng tay lớn mãi để nối sơn hà.mô tả","Cơ sở N, Bình Chính"));
-        return list;
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    private void getResultSearch() {
+        listEvent = new ArrayList<>();
+        mSharedPreferences = getActivity().getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
+        String userId = mSharedPreferences.getString("userId","");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date currentDate = new Date();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Event").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                EventModel eventItem = snapshot.getValue(EventModel.class);
+
+                if(eventItem.getIdUser().equals(userId)){
+
+                    try {
+                        Date sCompare = sdf.parse(eventItem.getDate());
+                        if(sCompare.equals(currentDate) || sCompare.after(currentDate)){
+                            listEvent.add(eventItem);
+                            eventAdapter.notifyDataSetChanged();
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

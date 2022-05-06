@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 startFogetPassword1Activity();
             }
         });
+
     }
 
     private void startFogetPassword1Activity() {

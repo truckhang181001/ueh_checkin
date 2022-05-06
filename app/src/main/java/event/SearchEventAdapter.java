@@ -10,14 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codesieucap.ueh_checkin.R;
+import com.codesieucap.ueh_checkin.models.EventModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.SearchEventViewHolder>{
 
-    private List<Event> list;
+    private List<EventModel> list;
 
-    public void setData(List<Event> list){
+    public void setData(List<EventModel> list){
         this.list = list;
         notifyDataSetChanged();
     }
@@ -31,13 +33,13 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SearchEventViewHolder holder, int position) {
-        Event event = list.get(position);
+        EventModel event = list.get(position);
         if (event == null) {
             return;
         }
-        holder.imgEvent.setImageResource(event.getEventId());
-        holder.tvName.setText(event.getName());
-        holder.tvDesc.setText(event.getDesc());
+        Picasso.get().load(event.getAvatarImgUri()).into(holder.imgEvent);
+        holder.tvName.setText(event.getEventName());
+        holder.tvDesc.setText(event.getDetail());
         holder.tvAddress.setText(event.getAddress());
     }
 

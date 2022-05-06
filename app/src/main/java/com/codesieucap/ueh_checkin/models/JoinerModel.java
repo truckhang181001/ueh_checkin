@@ -1,19 +1,25 @@
 package com.codesieucap.ueh_checkin.models;
 
+import java.util.UUID;
+
 public class JoinerModel {
     private String idCode;
     private String joinerName, className, email, ticketCode;
     private String gender;
     private String status;
 
-    public JoinerModel(String idCode, String joinerName, String className, String email, String gender, String status, String ticketCode) {
+    public static final String STATUS_SENT = "EMAIL_SENT";
+    public static final String STATUS_FAIL = "SEND_FAIL";
+    public static final String STATUS_PENDING = "PENDING";
+
+    public JoinerModel(String idCode, String joinerName, String className, String email, String gender) {
         this.idCode = idCode;
         this.joinerName = joinerName;
         this.className = className;
         this.email = email;
         this.gender = gender;
-        this.status = status;
-        this.ticketCode = ticketCode;
+        this.status = STATUS_PENDING;
+        this.ticketCode = UUID.randomUUID().toString();
     }
 
     public JoinerModel(){
