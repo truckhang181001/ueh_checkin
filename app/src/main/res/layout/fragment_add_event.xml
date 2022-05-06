@@ -161,6 +161,11 @@
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/imageViewQR"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/app_background"/>
 
         <Button
             android:id="@+id/buttonCreateEvent"

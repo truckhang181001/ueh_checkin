@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,7 @@ public class AddEventFragment extends Fragment {
     private EditText editTextEventName, editTextEventDate, editTextEventTime, editTextEventLocation, editTextEventDetail, editTextGoogleSheet;
     private Button buttonCreateEvent;
     private ImageButton imageButtonEventAvatar, imageButtonEventCover;
+    private ImageView imageViewQR;
 
     private List<JoinerModel> listJoiner;
     private Uri avatarUri,coverUri, cacheUri;
@@ -70,6 +72,7 @@ public class AddEventFragment extends Fragment {
         imageButtonEventCover = binding.imageButtonEventCover;
         editTextGoogleSheet = binding.editTextGoogleSheet;
         buttonCreateEvent = binding.buttonCreateEvent;
+        imageViewQR = binding.imageViewQR;
 
         buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +107,21 @@ public class AddEventFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void generateAndSaveQR(){
+//        String textQR = "";
+//        // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
+//        QRGEncoder qrgEncoder = new QRGEncoder(textQR, null, QRGContents.Type.TEXT, 1500);
+//        qrgEncoder.setColorBlack(Color.BLACK);
+//        qrgEncoder.setColorWhite(Color.WHITE);
+//        // Getting QR-Code as Bitmap
+//        Bitmap bitmap = qrgEncoder.getBitmap();
+//
+//        String savePath = Environment.getExternalStorageDirectory().getPath() + "/Pictures/";
+//        Uri uriQR = Uri.fromFile(new File(savePath));
+//        QRGSaver qrgSaver = new QRGSaver();
+//        qrgSaver.save(savePath, textQR, bitmap, QRGContents.ImageType.IMAGE_JPEG);
     }
 
     private void createEvent(){
