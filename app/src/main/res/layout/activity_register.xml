@@ -14,7 +14,7 @@
 
 
         <TextView
-            android:text="Tên đăng nhập"
+            android:text="Tên người dùng"
             android:layout_marginTop="60dp"
             android:textSize="16sp"
             android:layout_width="wrap_content"
@@ -82,12 +82,15 @@
         <TextView
             android:text="Chọn ảnh đại diện"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
             android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold" />
+
         <ImageButton
             android:id="@+id/registerImageButtonAvatar"
+            android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:src="@drawable/app_background"/>
