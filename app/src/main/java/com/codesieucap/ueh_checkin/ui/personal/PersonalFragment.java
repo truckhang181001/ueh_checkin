@@ -94,7 +94,7 @@ public class PersonalFragment extends Fragment {
         startActivity(intent);
     }
     private void logOut(){
-        Intent intent = new Intent(getContext(), EventDetailActivity.class);
+        Intent intent = new Intent(getContext(), WelcomeActivity.class);
         startActivity(intent);
     }
 
