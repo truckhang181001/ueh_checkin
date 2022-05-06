@@ -12,6 +12,8 @@ public class JoinerModel implements Serializable {
     public static final String STATUS_SENT = "EMAIL_SENT";
     public static final String STATUS_FAIL = "SEND_FAIL";
     public static final String STATUS_PENDING = "PENDING";
+    public static final String STATUS_CHECKED = "CHECKED";
+
 
     public JoinerModel(String idCode, String joinerName, String className, String email, String gender) {
         this.idCode = idCode;

@@ -71,11 +71,13 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private void startPartivityCheckedinActivity() {
         Intent intent = new Intent(EventDetailActivity.this, ParticipantCheckedinActivity.class);
+        intent.putExtra("eventData",eventItem);
         startActivity(intent);
     }
 
     private void startParticipantListActivity() {
         Intent intent = new Intent(EventDetailActivity.this, ParticipantListActivity.class);
+        intent.putExtra("eventData",eventItem);
         startActivity(intent);
     }
 }

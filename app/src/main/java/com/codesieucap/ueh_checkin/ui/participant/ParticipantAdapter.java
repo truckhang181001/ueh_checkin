@@ -11,19 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codesieucap.ueh_checkin.R;
+import com.codesieucap.ueh_checkin.models.JoinerModel;
 
 import java.util.List;
 
 public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.ParticipantViewHolder> {
 
     private Context context;
-    private List<Participant> participantList;
+    private List<JoinerModel> participantList;
 
     public ParticipantAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<Participant> list){
+    public void setData(List<JoinerModel> list){
         this.participantList = list;
         notifyDataSetChanged();
     }
@@ -38,17 +39,17 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ParticipantViewHolder holder, int position) {
-        Participant participant = participantList.get(position);
+        JoinerModel participant = participantList.get(position);
         if (participant == null){
             return;
         }
-        holder.tv_oder.setText(participant.getOrder());
-        holder.tv_name.setText(participant.getName());
-        holder.tv_class.setText(participant.getBranch());
+        holder.tv_oder.setText(participant.getIdCode());
+        holder.tv_name.setText(participant.getJoinerName());
+        holder.tv_class.setText(participant.getClassName());
         holder.tv_status.setText(participant.getStatus());
-        if (participant.getStatus() == "0") {
-            holder.tv_status.setBackgroundColor(R.color.yellow);
-        }
+//        if (participant.getStatus() == "0") {
+//            holder.tv_status.setBackgroundColor(R.color.yellow);
+//        }
     }
 
     @Override
