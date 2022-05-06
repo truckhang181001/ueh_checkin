@@ -1,6 +1,7 @@
 package com.codesieucap.ueh_checkin.ui.search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.codesieucap.ueh_checkin.EventDetailActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentHappeningBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.google.firebase.database.ChildEventListener;
@@ -51,7 +53,14 @@ public class HappeningFragment extends Fragment {
 
         getResultSearch();
         eventAdapter = new SearchEventAdapter();
-        eventAdapter.setData(listEvent);
+        eventAdapter.setData(listEvent, new SearchEventAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClickListener(EventModel event) {
+                Intent intent = new Intent(getActivity(), EventDetailActivity.class);
+                intent.putExtra("eventData",event);
+                startActivity(intent);
+            }
+        });
 
         rcvEvent.setAdapter(eventAdapter);
 

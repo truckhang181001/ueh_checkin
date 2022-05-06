@@ -18,9 +18,15 @@ import java.util.List;
 public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.SearchEventViewHolder>{
 
     private List<EventModel> list;
+    private OnItemClickListener listener;
 
-    public void setData(List<EventModel> list){
+    public interface OnItemClickListener{
+        void onItemClickListener(EventModel event);
+    }
+
+    public void setData(List<EventModel> list, OnItemClickListener listener){
         this.list = list;
+        this.listener = listener;
         notifyDataSetChanged();
     }
 
@@ -37,10 +43,7 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
         if (event == null) {
             return;
         }
-        Picasso.get().load(event.getAvatarImgUri()).into(holder.imgEvent);
-        holder.tvName.setText(event.getEventName());
-        holder.tvDesc.setText(event.getDetail());
-        holder.tvAddress.setText(event.getAddress());
+        holder.binding(event,listener);
     }
 
     @Override
@@ -62,6 +65,18 @@ public class SearchEventAdapter extends RecyclerView.Adapter<SearchEventAdapter.
             tvName = itemView.findViewById(R.id.name_event_search);
             tvDesc = itemView.findViewById(R.id.desc_event_search);
             tvAddress = itemView.findViewById(R.id.address_event_search);
+        }
+        private void binding(final EventModel event, final OnItemClickListener listener){
+            Picasso.get().load(event.getAvatarImgUri()).into(imgEvent);
+            tvName.setText(event.getEventName());
+            tvDesc.setText(event.getDetail());
+            tvAddress.setText(event.getAddress());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClickListener(event);
+                }
+            });
         }
     }
 }
