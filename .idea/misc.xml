@@ -59,10 +59,14 @@
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/profile_user.xml" value="0.25" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/layout/style_calender_view.xml" value="0.2359375" />
         <entry key="..\:/Users/PC_LENOVO/AndroidStudioProjects/ueh_checkin/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_add_participant.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/activity_event_detail.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/activity_participant_list.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.26153564453125" />
+        <entry key="app/src/main/res/layout/activity_scan_fail.xml" value="0.26811594202898553" />
+        <entry key="app/src/main/res/layout/activity_scan_success.xml" value="0.26811594202898553" />
+        <entry key="app/src/main/res/layout/activity_scanning.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/activity_welcome.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/fragment_add_event.xml" value="0.26811594202898553" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.434785633029184" />

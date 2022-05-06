@@ -23,9 +23,6 @@ public class WelcomeActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        SendMail send = new SendMail("bi.nv2@oude.edu.vn","UEH CHECKIN", "TESTING");
-        send.sendEmail();
-
         btn_login = findViewById(R.id.button_login);
         btn_start_now = findViewById(R.id.button_start_now);
 

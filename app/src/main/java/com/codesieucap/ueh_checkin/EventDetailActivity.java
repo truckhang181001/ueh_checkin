@@ -13,11 +13,12 @@ import com.codesieucap.ueh_checkin.databinding.ActivityEventDetailBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.ui.participant.ParticipantCheckedinActivity;
 import com.codesieucap.ueh_checkin.ui.participant.ParticipantListActivity;
+import com.codesieucap.ueh_checkin.ui.scanQRcode.ScanningActivity;
 import com.squareup.picasso.Picasso;
 
 public class EventDetailActivity extends AppCompatActivity {
 
-    private Button btn_manage_participant, btn_list_checked;
+    private Button btn_manage_participant, btn_list_checked,btnCheckin;
     private TextView eventName, eventAddress, eventDetail, eventDate, eventTime;
     private ImageView eventCover;
 
@@ -45,6 +46,7 @@ public class EventDetailActivity extends AppCompatActivity {
         eventDate = binding.textViewEventDate;
         eventTime = binding.textViewEventTime;
         eventCover = binding.imageViewEventCover;
+        btnCheckin = binding.buttonEventCheckin;
 
         //Fill Data into items
         eventDate.setText(eventItem.getDate());
@@ -65,6 +67,14 @@ public class EventDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startPartivityCheckedinActivity();
+            }
+        });
+
+        btnCheckin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDetailActivity.this, ScanningActivity.class);
+                startActivity(intent);
             }
         });
     }
