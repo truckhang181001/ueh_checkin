@@ -1,5 +1,6 @@
 package com.codesieucap.ueh_checkin.ui.personal;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -26,4 +27,5 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
 }
