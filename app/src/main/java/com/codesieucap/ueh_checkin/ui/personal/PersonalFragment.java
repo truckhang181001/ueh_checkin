@@ -1,7 +1,9 @@
 package com.codesieucap.ueh_checkin.ui.personal;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,13 @@ import com.codesieucap.ueh_checkin.WelcomeActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentPersonalBinding;
 import com.codesieucap.ueh_checkin.ui.loginAndRegister.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 public class PersonalFragment extends Fragment {
 
     private FragmentPersonalBinding binding;
     private FirebaseAuth mAuth;
+    private SharedPreferences mSharePreferences;
 
     private ImageView edit_profile, avatar;
     private LinearLayout edit_system, change_password, intro_guideline, log_out;
@@ -44,6 +48,7 @@ public class PersonalFragment extends Fragment {
             getActivity().finish();
             startActivity(intent);
         }
+        
 
         edit_system = root.findViewById(R.id.edit_system);
         change_password = root.findViewById(R.id.change_password);
@@ -53,6 +58,9 @@ public class PersonalFragment extends Fragment {
         tv_dislay_name = root.findViewById(R.id.textview_dislay_name_user);
         tv_display_email = root.findViewById(R.id.textview_email_user);
         avatar = root.findViewById(R.id.imageview_avatar_user);
+
+        getAccount();
+
 
 //        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //        tv_dislay_name.setText(user.getDisplayName());
@@ -90,6 +98,15 @@ public class PersonalFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void getAccount(){
+        mSharePreferences = getActivity().getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
+        String userNamePref = mSharePreferences.getString("userName","");
+        String userAvatarPref = mSharePreferences.getString("userAvatar","");
+        tv_dislay_name.setText(userNamePref);
+        Picasso.get().load(userAvatarPref).into(avatar);
+        tv_display_email.setText(mAuth.getCurrentUser().getEmail());
     }
 
     private void startEditProfileActivity(){
