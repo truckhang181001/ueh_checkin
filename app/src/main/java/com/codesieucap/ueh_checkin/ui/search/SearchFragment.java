@@ -1,5 +1,6 @@
 package com.codesieucap.ueh_checkin.ui.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,12 +13,15 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.databinding.FragmentSearchBinding;
+import com.codesieucap.ueh_checkin.ui.loginAndRegister.LoginActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SearchFragment extends Fragment {
 
     private FragmentSearchBinding binding;
+    private FirebaseAuth mAuth;
 
     //bmk
     private TabLayout mTabLayout;
@@ -32,6 +36,14 @@ public class SearchFragment extends Fragment {
 
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        }
 
         //bmk
         mTabLayout = root.findViewById(R.id.tab_layout);

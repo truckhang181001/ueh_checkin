@@ -28,10 +28,12 @@ import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
 import com.codesieucap.ueh_checkin.readGoogleSheet.GetDataTask;
 import com.codesieucap.ueh_checkin.readGoogleSheet.InternetConnection;
+import com.codesieucap.ueh_checkin.ui.loginAndRegister.LoginActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -49,6 +51,7 @@ public class AddEventFragment extends Fragment {
     private DatabaseReference mDatabase;
     private StorageReference mStorageReference;
     private SharedPreferences mSharePreferences;
+    private FirebaseAuth mAuth;
 
     private EditText editTextEventName, editTextEventDate, editTextEventTime, editTextEventLocation, editTextEventDetail, editTextGoogleSheet;
     private Button buttonCreateEvent;
@@ -64,6 +67,14 @@ public class AddEventFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentAddEventBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        }
 
         editTextEventName = binding.editTextEventName;
         editTextEventDate = binding.editTextEventDate;

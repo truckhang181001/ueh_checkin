@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.codesieucap.ueh_checkin.EventDetailActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentHomeBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
+import com.codesieucap.ueh_checkin.ui.loginAndRegister.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +44,7 @@ public class HomeFragment extends Fragment {
     //Data
     private DatabaseReference mDatabase;
     private SharedPreferences mSharePreferences;
+    private FirebaseAuth mAuth;
 
     //View items
     private TextView textViewUserName;
@@ -57,6 +60,14 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         textViewUserName = binding.textviewUserName;
         imageViewUserAvatar = binding.avatarUser;
+
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() == null){
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            getActivity().finish();
+            startActivity(intent);
+        }
 
         getAccount();
 

@@ -8,8 +8,8 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -84,9 +84,10 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog_login.dismiss();
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
-
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             //Authentication
                             mSharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
                             SharedPreferences.Editor editor = mSharedPreferences.edit();
@@ -102,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("userAvatar",userDB.getAvatarImgUri());
                                         editor.commit();
 
-                                        progressDialog_login.dismiss();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     }
@@ -128,6 +128,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                 }
                             });
+                        }
+                        else{
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thất bại, xin vui lòng thử lại", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

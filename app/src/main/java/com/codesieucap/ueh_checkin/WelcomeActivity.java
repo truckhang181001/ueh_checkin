@@ -10,15 +10,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.codesieucap.ueh_checkin.ui.loginAndRegister.LoginActivity;
 import com.codesieucap.ueh_checkin.ui.loginAndRegister.RegisterActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class WelcomeActivity extends AppCompatActivity {
 
     private Button btn_login, btn_start_now;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
