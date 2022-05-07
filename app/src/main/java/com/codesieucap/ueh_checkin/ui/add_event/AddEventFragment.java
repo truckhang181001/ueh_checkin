@@ -3,6 +3,7 @@ package com.codesieucap.ueh_checkin.ui.add_event;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.databinding.FragmentAddEventBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
@@ -188,6 +190,12 @@ public class AddEventFragment extends Fragment {
     }
 
     private void uploadImage(Uri Uri, String mode){
+        ProgressDialog pd = new ProgressDialog(getActivity());
+        pd.setTitle("UPLOADING");
+        pd.setMessage("Đang đăng tải ảnh...");
+        pd.setIcon(R.drawable.ueh_check_logo);
+        pd.show();
+
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         final String randomKey = UUID.randomUUID().toString();
@@ -207,19 +215,17 @@ public class AddEventFragment extends Fragment {
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
+                pd.dismiss();
                 if (task.isSuccessful()) {
                     cacheUri = task.getResult();
                     if(mode.equals("cover")){
                         eventAddNew.setCoverImgUri(cacheUri.toString());
-                        Toast.makeText(getActivity(),"Upload Cover",Toast.LENGTH_LONG).show();
                     }
                     if(mode.equals("avatar")){
                         eventAddNew.setAvatarImgUri(cacheUri.toString());
-                        Toast.makeText(getActivity(),"Upload Image",Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    // Handle failures
-                    // ...
+                    Toast.makeText(getActivity(),"Đăng tải hình ảnh thất bại",Toast.LENGTH_LONG).show();
                 }
             }
         });

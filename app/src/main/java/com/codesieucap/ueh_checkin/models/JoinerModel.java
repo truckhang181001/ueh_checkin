@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class JoinerModel implements Serializable {
     private String idCode;
-    private String joinerName, className, email, ticketCode;
+    private String joinerName, className, email, ticketCode,ticketCodeLink;
     private String gender;
     private String status;
 
@@ -83,5 +83,13 @@ public class JoinerModel implements Serializable {
 
     public void setTicketCode(String ticketCode) {
         this.ticketCode = ticketCode;
+    }
+
+    public String getTicketCodeLink() {
+        return ticketCodeLink;
+    }
+
+    public void setTicketCodeLink(String ticketCodeLink) {
+        this.ticketCodeLink = ticketCodeLink;
     }
 }

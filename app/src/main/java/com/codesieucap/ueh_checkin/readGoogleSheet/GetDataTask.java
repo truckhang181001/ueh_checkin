@@ -3,20 +3,37 @@ package com.codesieucap.ueh_checkin.readGoogleSheet;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
+import java.util.UUID;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 
 public class GetDataTask extends AsyncTask<Void, Void, Void> {
 
@@ -28,6 +45,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
     private Context context;
     private EventModel eventItem;
     private DatabaseReference mDatabase;
+    private StorageReference mStorage;
 
 
     public GetDataTask(Context context, List<JoinerModel> list, String sheetURL, EventModel eventItem) {
@@ -52,8 +70,9 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
             jIndex=x;
 
         dialog = new ProgressDialog(context);
-        dialog.setTitle("Hey Wait Please..."+x);
-        dialog.setMessage("I am getting your JSON");
+        dialog.setTitle("DANH SÁCH THAM GIA"+x);
+        dialog.setMessage("Đang lấy dữ liệu người tham gia...");
+        dialog.setIcon(R.drawable.ueh_check_logo);
         dialog.show();
     }
 
@@ -120,9 +139,8 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
                             /**
                              * Adding name and phone concatenation in List...
                              */
+
                             list.add(model);
-
-
                         }
                     }
                 }
@@ -135,10 +153,22 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
+    private byte[] generateQR(String message){
+        // Initializing the QR Encoder with your value to be encoded, type you required and Dimension
+        QRGEncoder qrgEncoder = new QRGEncoder(message, null, QRGContents.Type.TEXT, 1500);
+        qrgEncoder.setColorBlack(Color.BLACK);
+        qrgEncoder.setColorWhite(Color.WHITE);
+        // Getting QR-Code as Bitmap
+        Bitmap bitmap = qrgEncoder.getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+        return data;
+    }
+
     @Override
     protected void onPostExecute(Void unused) {
         super.onPostExecute(unused);
-        dialog.dismiss();
         /**
          * Checking if List size if more than zero then
          * Update ListView
@@ -146,7 +176,41 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
         if(list.size() > 0) {
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("Event").child(eventItem.getIdCode()).setValue(eventItem);
-            Toast.makeText(context, "Upload dữ liệu thành công",Toast.LENGTH_LONG).show();
+
+            for(int i=0; i < list.size();i++){
+                Integer instance = i;
+                mStorage = FirebaseStorage.getInstance().getReference();
+
+                final String randomKey = UUID.randomUUID().toString();
+                StorageReference riversRef = mStorage.child("images/"+randomKey);
+
+                UploadTask uploadTask = riversRef.putBytes(generateQR(list.get(instance).getTicketCode()));
+                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
+
+                        // Continue with the task to get the download URL
+                        return riversRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        Log.d("TRUCKHANG", String.valueOf(instance));
+                        list.get(instance).setTicketCodeLink(task.getResult().toString());
+
+                        mDatabase = FirebaseDatabase.getInstance().getReference();
+                        mDatabase.child("Event").child(eventItem.getIdCode()).child("listJoiner").child(String.valueOf(instance)).setValue(list.get(instance));
+
+                        if(instance == list.size() - 1){
+                            dialog.dismiss();
+                            Toast.makeText(context, "Upload dữ liệu thành công",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
         }
         else {
             Toast.makeText(context, "Đã có lỗi, vui lòng thử lại",Toast.LENGTH_LONG).show();
