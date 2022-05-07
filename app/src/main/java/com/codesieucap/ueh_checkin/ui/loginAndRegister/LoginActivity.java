@@ -87,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
                         progressDialog_login.dismiss();
                         if(task.isSuccessful()){
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             //Authentication
                             mSharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
                             SharedPreferences.Editor editor = mSharedPreferences.edit();
