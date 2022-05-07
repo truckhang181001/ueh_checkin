@@ -4,6 +4,8 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.codesieucap.ueh_checkin.models.JoinerModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Properties;
 
@@ -18,12 +20,15 @@ import javax.mail.internet.MimeMessage;
 public class SendMail {
     private Context context;
     private JoinerModel joinerData;
-    private String eventName, eventTime, eventDate;
+    private String eventID,eventName, eventTime, eventDate;
     private final String USERNAME = "truckhang181001@gmail.com";
     private final String PASSWORD = "cpqoecauytbondlt";
 
-    public SendMail(Context context,String eventName, String eventDate, String eventTime, JoinerModel joinerData) {
+    private DatabaseReference databaseReference;
+
+    public SendMail(Context context,String eventID,String eventName, String eventDate, String eventTime, JoinerModel joinerData) {
         this.context = context;
+        this.eventID = eventID;
         this.eventDate = eventDate;
         this.eventName = eventName;
         this.eventTime = eventTime;
@@ -60,6 +65,11 @@ public class SendMail {
             message.setSubject(emailSubject);
             message.setText(emailMesseage);
             Transport.send(message);
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference.child("Event")
+                    .child(eventID).child("listJoiner").child(joinerData.getIdCode())
+                    .child("status").setValue(JoinerModel.STATUS_SENT);
+            joinerData.setStatus(JoinerModel.STATUS_SENT);
             Toast.makeText(context, "Gửi email thành công!", Toast.LENGTH_LONG).show();
 
         } catch (MessagingException e) {

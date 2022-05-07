@@ -43,7 +43,9 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.normal.TedPermission;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class AddEventFragment extends Fragment {
@@ -140,6 +142,7 @@ public class AddEventFragment extends Fragment {
         mSharePreferences = getActivity().getSharedPreferences("dataLogin", Context.MODE_PRIVATE);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         listJoiner = new ArrayList<>();
+        Map<String,JoinerModel> mapJoiner = new HashMap<String,JoinerModel>();
 
         String keyEvent = mDatabase.child("Event").push().getKey();
         String keyUser  = mSharePreferences.getString("userId","");
@@ -150,12 +153,12 @@ public class AddEventFragment extends Fragment {
         String eventDetail = editTextEventDetail.getText().toString();
 
         eventAddNew = new EventModel(keyEvent,keyUser,eventName,eventLocation,eventDate,
-                eventTime,eventTime,eventDetail,"","",listJoiner);
+                eventTime,eventTime,eventDetail,"","",mapJoiner);
 
         uploadImage(coverUri, "cover");
         uploadImage(avatarUri,"avatar");
 
-        new GetDataTask(getActivity(),listJoiner,editTextGoogleSheet.getText().toString(), eventAddNew).execute();
+        new GetDataTask(getActivity(),mapJoiner,editTextGoogleSheet.getText().toString(), eventAddNew).execute();
 
         Toast.makeText(getActivity(),"Checking",Toast.LENGTH_LONG).show();
     }

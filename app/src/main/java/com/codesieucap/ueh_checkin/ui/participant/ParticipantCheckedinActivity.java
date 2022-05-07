@@ -12,8 +12,8 @@ import com.codesieucap.ueh_checkin.databinding.ActivityParticipantCheckedinBindi
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ParticipantCheckedinActivity extends AppCompatActivity {
     private ActivityParticipantCheckedinBinding binding;
@@ -22,7 +22,7 @@ public class ParticipantCheckedinActivity extends AppCompatActivity {
     private ParticipantAdapter adapter;
 
     private EventModel eventItem;
-    private List<JoinerModel> joinerCheckedList;
+    private Map<String, JoinerModel> joinerCheckedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,11 @@ public class ParticipantCheckedinActivity extends AppCompatActivity {
         //Get data from Intent
         Intent intent = getIntent();
         eventItem = (EventModel) intent.getSerializableExtra("eventData");
-        joinerCheckedList = new ArrayList<>();
-        for(JoinerModel item : eventItem.getListJoiner()){
-            if(item.getStatus() == JoinerModel.STATUS_CHECKED){
-                joinerCheckedList.add(item);
+        joinerCheckedList = new HashMap<String, JoinerModel>();
+
+        for(String key : eventItem.getListJoiner().keySet()){
+            if(eventItem.getListJoiner().get(key).getStatus() == JoinerModel.STATUS_CHECKED){
+                joinerCheckedList.put(key,eventItem.getListJoiner().get(key));
             }
         }
 

@@ -29,7 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import androidmads.library.qrgenearator.QRGContents;
@@ -40,7 +41,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
     ProgressDialog dialog;
     int jIndex;
     int x;
-    private List<JoinerModel> list;
+    private Map<String,JoinerModel> map;
     private String sheetURL;
     private Context context;
     private EventModel eventItem;
@@ -48,8 +49,8 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
     private StorageReference mStorage;
 
 
-    public GetDataTask(Context context, List<JoinerModel> list, String sheetURL, EventModel eventItem) {
-        this.list = list;
+    public GetDataTask(Context context, Map<String,JoinerModel> map, String sheetURL, EventModel eventItem) {
+        this.map = map;
         this.sheetURL = sheetURL;
         this.context = context;
         this.eventItem = eventItem;
@@ -62,7 +63,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
          * Progress Dialog for User Interaction
          */
 
-        x=list.size();
+        x=map.size();
 
         if(x==0)
             jIndex=0;
@@ -135,12 +136,11 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
 
                             JoinerModel model = new JoinerModel(studentID,name,className,email,gender);
 
-
                             /**
                              * Adding name and phone concatenation in List...
                              */
 
-                            list.add(model);
+                            map.put(model.getIdCode(),model);
                         }
                     }
                 }
@@ -173,18 +173,20 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
          * Checking if List size if more than zero then
          * Update ListView
          */
-        if(list.size() > 0) {
+        if(map.size() > 0) {
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mDatabase.child("Event").child(eventItem.getIdCode()).setValue(eventItem);
 
-            for(int i=0; i < list.size();i++){
-                Integer instance = i;
+            Set<String> keySetJoiner = map.keySet();
+
+            for(String key: keySetJoiner){
+                String instance = key;
                 mStorage = FirebaseStorage.getInstance().getReference();
 
                 final String randomKey = UUID.randomUUID().toString();
                 StorageReference riversRef = mStorage.child("images/"+randomKey);
 
-                UploadTask uploadTask = riversRef.putBytes(generateQR(list.get(instance).getTicketCode()));
+                UploadTask uploadTask = riversRef.putBytes(generateQR(map.get(instance).getTicketCode()));
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
                     public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -199,15 +201,15 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
                         Log.d("TRUCKHANG", String.valueOf(instance));
-                        list.get(instance).setTicketCodeLink(task.getResult().toString());
+                        map.get(instance).setTicketCodeLink(task.getResult().toString());
 
                         mDatabase = FirebaseDatabase.getInstance().getReference();
-                        mDatabase.child("Event").child(eventItem.getIdCode()).child("listJoiner").child(String.valueOf(instance)).setValue(list.get(instance));
+                        mDatabase.child("Event").child(eventItem.getIdCode()).child("listJoiner").child(instance).setValue(map.get(instance));
 
-                        if(instance == list.size() - 1){
-                            dialog.dismiss();
-                            Toast.makeText(context, "Upload dữ liệu thành công",Toast.LENGTH_LONG).show();
-                        }
+//                        if(instance == list.size() - 1){
+//                            dialog.dismiss();
+//                            Toast.makeText(context, "Upload dữ liệu thành công",Toast.LENGTH_LONG).show();
+//                        }
                     }
                 });
             }

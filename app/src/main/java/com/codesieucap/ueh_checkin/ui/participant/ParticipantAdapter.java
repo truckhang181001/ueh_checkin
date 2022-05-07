@@ -13,27 +13,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.ParticipantViewHolder> {
 
     private Context context;
-    private List<JoinerModel> participantList;
+    private ArrayList participantList;
     private OnClickItemListener onClickItemListener;
 
     public interface OnClickItemListener{
         public void onLickItemListener(JoinerModel joinerItem);
     }
 
-    public ParticipantAdapter(Context context, List<JoinerModel> list, OnClickItemListener onClickItemListener)
+    public ParticipantAdapter(Context context, Map<String, JoinerModel> list, OnClickItemListener onClickItemListener)
     {
         this.context = context;
-        this.participantList = list;
+        this.participantList = new ArrayList<>();
+        this.participantList.addAll(list.entrySet());
         this.onClickItemListener = onClickItemListener;
     }
 
-    public void setData(List<JoinerModel> list){
-        this.participantList = list;
+    public void setData(Map<String, JoinerModel> list){
+        this.participantList = new ArrayList<>();
+        this.participantList.addAll(list.entrySet());
         notifyDataSetChanged();
     }
 
@@ -47,11 +50,11 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ParticipantViewHolder holder, int position) {
-        JoinerModel participant = participantList.get(position);
+        Map.Entry<String,JoinerModel> participant = (Map.Entry<String, JoinerModel>) participantList.get(position);
         if (participant == null){
             return;
         }
-        holder.binding(participant,onClickItemListener);
+        holder.binding(participant.getValue(),onClickItemListener);
 //        if (participant.getStatus() == "0") {
 //            holder.tv_status.setBackgroundColor(R.color.yellow);
 //        }
@@ -87,6 +90,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
                 @Override
                 public void onClick(View view) {
                     listener.onLickItemListener(participant);
+                    notifyDataSetChanged();
                 }
             });
         }

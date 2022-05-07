@@ -18,6 +18,9 @@ import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
 import com.google.zxing.Result;
 
+import java.util.Map;
+import java.util.Set;
+
 public class ScanningActivity extends AppCompatActivity {
 
     private ActivityScanningBinding binding;
@@ -50,15 +53,18 @@ public class ScanningActivity extends AppCompatActivity {
                         progressDialog.setMessage("Đang kiểm tra dữ liệu, xin vui lòng đợi...");
                         progressDialog.show();
 
-                        for(JoinerModel item : eventItem.getListJoiner()){
-                            if(item.getTicketCode().equals(result.getText())){
+                        Map<String, JoinerModel> mapJoiner = eventItem.getListJoiner();
+                        Set<String> keySet = mapJoiner.keySet();
+
+                        for(String key : keySet){
+                            if(mapJoiner.get(key).getTicketCode().equals(result.getText())){
                                 checkVerify = true;
                                 progressDialog.dismiss();
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(ScanningActivity.this);
                                 alertDialog.setTitle("UEH CHECKIN");
                                 alertDialog.setIcon(R.drawable.success_icon);
-                                alertDialog.setMessage("Mã định danh: "+item.getIdCode() +
-                                        "\nHọ và tên: "+item.getJoinerName());
+                                alertDialog.setMessage("Mã định danh: "+mapJoiner.get(key).getIdCode() +
+                                        "\nHọ và tên: "+mapJoiner.get(key).getJoinerName());
                                 alertDialog.setNeutralButton("Tiếp tục", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {

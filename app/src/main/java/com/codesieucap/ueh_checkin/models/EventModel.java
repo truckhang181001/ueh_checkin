@@ -1,14 +1,14 @@
 package com.codesieucap.ueh_checkin.models;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Map;
 
 public class EventModel implements Serializable {
     private String idCode, idUser;
     private String eventName, address, date, startTime, endTime, detail, avatarImgUri, coverImgUri;
-    private List<JoinerModel> listJoiner;
+    private Map<String,JoinerModel> listJoiner;
 
-    public EventModel(String idCode, String idUser, String eventName, String address, String date, String startTime, String endTime, String detail, String avatarImgUri, String coverImgUri, List<JoinerModel> listJoiner) {
+    public EventModel(String idCode, String idUser, String eventName, String address, String date, String startTime, String endTime, String detail, String avatarImgUri, String coverImgUri, Map<String,JoinerModel> listJoiner) {
         this.idCode = idCode;
         this.idUser = idUser;
         this.eventName = eventName;
@@ -98,11 +98,11 @@ public class EventModel implements Serializable {
         this.coverImgUri = coverImgUri;
     }
 
-    public List<JoinerModel> getListJoiner() {
+    public Map<String,JoinerModel> getListJoiner() {
         return listJoiner;
     }
 
-    public void setListJoiner(List<JoinerModel> listJoiner) {
+    public void setListJoiner(Map<String,JoinerModel> listJoiner) {
         this.listJoiner = listJoiner;
     }
 

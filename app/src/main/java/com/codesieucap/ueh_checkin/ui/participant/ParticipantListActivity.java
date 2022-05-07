@@ -99,8 +99,9 @@ public class ParticipantListActivity extends AppCompatActivity {
                 pd.setMessage("Đang gửi mail đến "+data.getJoinerName());
                 pd.show();
 
-                SendMail send =new SendMail(ParticipantListActivity.this,eventItem.getEventName(),eventItem.getDate(),eventItem.getStartTime(),data);
+                SendMail send =new SendMail(ParticipantListActivity.this,eventItem.getIdCode(),eventItem.getEventName(),eventItem.getDate(),eventItem.getStartTime(),data);
                 send.sendEmail();
+                adapter.notifyDataSetChanged();
                 dialog.dismiss();
                 pd.dismiss();
             }
