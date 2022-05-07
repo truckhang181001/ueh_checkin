@@ -105,6 +105,7 @@ public class PersonalFragment extends Fragment {
         startActivity(intent);
     }
     private void logOut(){
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(getContext(), WelcomeActivity.class);
         startActivity(intent);
     }
