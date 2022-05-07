@@ -1,5 +1,6 @@
 package com.codesieucap.ueh_checkin.ui.loginAndRegister;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private FirebaseAuth mAuth;
     private DatabaseReference mData;
-
+    private ProgressDialog progressDialog_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         foget_password = findViewById(R.id.textview_foget_password);
         userEmail = findViewById(R.id.loginEditTextUserEmail);
         userPassword = findViewById(R.id.loginEditTextUserPassword);
+        progressDialog_login = new ProgressDialog(this);
 
         String htmlString="<u>Quên mật khẩu</u>";
         foget_password.setText(Html.fromHtml(htmlString));
@@ -72,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginProcess() {
+        progressDialog_login.show();
         String email = userEmail.getText().toString();
         String password = userPassword.getText().toString();
 
@@ -98,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putString("userAvatar",userDB.getAvatarImgUri());
                                         editor.commit();
 
+                                        progressDialog_login.dismiss();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         startActivity(intent);
                                     }
