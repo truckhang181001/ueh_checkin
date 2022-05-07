@@ -19,9 +19,17 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
 
     private Context context;
     private List<JoinerModel> participantList;
+    private OnClickItemListener onClickItemListener;
 
-    public ParticipantAdapter(Context context) {
+    public interface OnClickItemListener{
+        public void onLickItemListener(JoinerModel joinerItem);
+    }
+
+    public ParticipantAdapter(Context context, List<JoinerModel> list, OnClickItemListener onClickItemListener)
+    {
         this.context = context;
+        this.participantList = list;
+        this.onClickItemListener = onClickItemListener;
     }
 
     public void setData(List<JoinerModel> list){
@@ -43,10 +51,7 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         if (participant == null){
             return;
         }
-        holder.tv_oder.setText(participant.getIdCode());
-        holder.tv_name.setText(participant.getJoinerName());
-        holder.tv_class.setText(participant.getClassName());
-        holder.tv_status.setText(participant.getStatus());
+        holder.binding(participant,onClickItemListener);
 //        if (participant.getStatus() == "0") {
 //            holder.tv_status.setBackgroundColor(R.color.yellow);
 //        }
@@ -71,6 +76,19 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             tv_name = itemView.findViewById(R.id.participant_name);
             tv_class = itemView.findViewById(R.id.participant_class);
             tv_status = itemView.findViewById(R.id.participant_status);
+        }
+
+        private void binding(JoinerModel participant, OnClickItemListener listener){
+            tv_oder.setText(participant.getIdCode());
+            tv_name.setText(participant.getJoinerName());
+            tv_class.setText(participant.getClassName());
+            tv_status.setText(participant.getStatus());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onLickItemListener(participant);
+                }
+            });
         }
     }
 }

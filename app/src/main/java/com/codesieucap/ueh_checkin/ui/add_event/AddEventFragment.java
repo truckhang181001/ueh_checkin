@@ -69,7 +69,7 @@ public class AddEventFragment extends Fragment {
         View root = binding.getRoot();
 
         mAuth = FirebaseAuth.getInstance();
-
+        mAuth.getCurrentUser().getEmail();
         if(mAuth.getCurrentUser() == null){
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             getActivity().finish();

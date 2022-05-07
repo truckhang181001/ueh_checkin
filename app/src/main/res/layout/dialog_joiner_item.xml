@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/buttonJoinerViewDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xem chi tiết"/>
+    <Button
+        android:id="@+id/buttonJoinerSendEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gửi thư mời"/>
+    <Button
+        android:id="@+id/buttonJoinerDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xoá"/>
+</LinearLayout>

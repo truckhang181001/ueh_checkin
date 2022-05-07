@@ -42,13 +42,18 @@ public class ParticipantCheckedinActivity extends AppCompatActivity {
 
         //Mapping
         rcv_checkedin = findViewById(R.id.recycleview_participant_checked_in);
-        adapter = new ParticipantAdapter(this);
+        adapter = new ParticipantAdapter(this, joinerCheckedList, new ParticipantAdapter.OnClickItemListener() {
+            @Override
+            public void onLickItemListener(JoinerModel joinerItem) {
+
+            }
+        });
 
         //Setup RecylerView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rcv_checkedin.setLayoutManager(layoutManager);
 
-        adapter.setData(joinerCheckedList);
+//        adapter.setData(joinerCheckedList);
         rcv_checkedin.setAdapter(adapter);
     }
 }
