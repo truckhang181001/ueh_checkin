@@ -55,9 +55,6 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             return;
         }
         holder.binding(participant.getValue(),onClickItemListener);
-//        if (participant.getStatus() == "0") {
-//            holder.tv_status.setBackgroundColor(R.color.yellow);
-//        }
     }
 
     @Override
@@ -81,7 +78,17 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
             tv_status = itemView.findViewById(R.id.participant_status);
         }
 
+        @SuppressLint("ResourceAsColor")
         private void binding(JoinerModel participant, OnClickItemListener listener){
+            if(participant.getStatus().equals(JoinerModel.STATUS_CHECKED))
+                tv_status.setBackgroundColor(R.color.main_blue);
+            if(participant.getStatus().equals(JoinerModel.STATUS_SENT))
+                tv_status.setBackgroundColor(R.color.main_blue);
+            if(participant.getStatus().equals(JoinerModel.STATUS_PENDING))
+                tv_status.setBackgroundColor(R.color.grey);
+            if(participant.getStatus().equals(JoinerModel.STATUS_FAIL))
+                tv_status.setBackgroundColor(R.color.red);
+
             tv_oder.setText(participant.getIdCode());
             tv_name.setText(participant.getJoinerName());
             tv_class.setText(participant.getClassName());

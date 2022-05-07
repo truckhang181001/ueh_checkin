@@ -16,6 +16,8 @@ import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.databinding.ActivityScanningBinding;
 import com.codesieucap.ueh_checkin.models.EventModel;
 import com.codesieucap.ueh_checkin.models.JoinerModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.Result;
 
 import java.util.Map;
@@ -26,6 +28,8 @@ public class ScanningActivity extends AppCompatActivity {
     private ActivityScanningBinding binding;
     private CodeScanner mCodeScanner;
     private EventModel eventItem;
+
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +76,9 @@ public class ScanningActivity extends AppCompatActivity {
                                     }
                                 });
                                 alertDialog.show();
+                                databaseReference = FirebaseDatabase.getInstance().getReference();
+                                databaseReference.child("Event").child(eventItem.getIdCode())
+                                        .child("listJoiner").child(key).child("status").setValue(JoinerModel.STATUS_CHECKED);
                                 break;
                             }
                         }

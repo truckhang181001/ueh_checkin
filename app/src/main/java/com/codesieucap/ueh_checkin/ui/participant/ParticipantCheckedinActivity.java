@@ -36,7 +36,7 @@ public class ParticipantCheckedinActivity extends AppCompatActivity {
         joinerCheckedList = new HashMap<String, JoinerModel>();
 
         for(String key : eventItem.getListJoiner().keySet()){
-            if(eventItem.getListJoiner().get(key).getStatus() == JoinerModel.STATUS_CHECKED){
+            if(eventItem.getListJoiner().get(key).getStatus().equals(JoinerModel.STATUS_CHECKED)){
                 joinerCheckedList.put(key,eventItem.getListJoiner().get(key));
             }
         }
