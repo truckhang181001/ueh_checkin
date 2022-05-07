@@ -90,10 +90,12 @@
 
         <ImageButton
             android:id="@+id/registerImageButtonAvatar"
+            android:background="@drawable/border_radius_grey"
             android:layout_gravity="center"
+            android:scaleType="centerInside"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/app_background"/>
+            android:src="@drawable/img_upload"/>
 
         <LinearLayout
             android:layout_width="match_parent"
