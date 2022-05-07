@@ -74,7 +74,6 @@ public class AddEventFragment extends Fragment {
         imageButtonEventCover = binding.imageButtonEventCover;
         editTextGoogleSheet = binding.editTextGoogleSheet;
         buttonCreateEvent = binding.buttonCreateEvent;
-        imageViewQR = binding.imageViewQR;
 
         buttonCreateEvent.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,7 +1,5 @@
 package com.codesieucap.ueh_checkin.ui.personal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.codesieucap.ueh_checkin.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +51,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(ChangePasswordActivity.this, "Thay đổi mật khẩu thành công !", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                        else{
+                            Toast.makeText(ChangePasswordActivity.this, "Thay đổi mật khẩu thất bại !", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }
                     }
