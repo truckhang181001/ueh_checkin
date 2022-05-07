@@ -76,10 +76,6 @@
             android:name=".ui.loginAndRegister.ChangePasswordSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.loginAndRegister.FogetPassword3Activity"
-            android:exported="false"
-            android:label="@string/title_foget_password3" />
-        <activity
             android:name=".ui.loginAndRegister.FogetPassword2Activity"
             android:exported="false"
             android:label="@string/title_foget_password2"

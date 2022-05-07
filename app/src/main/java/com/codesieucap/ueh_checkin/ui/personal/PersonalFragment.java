@@ -2,6 +2,7 @@ package com.codesieucap.ueh_checkin.ui.personal;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +20,16 @@ import com.codesieucap.ueh_checkin.EventDetailActivity;
 import com.codesieucap.ueh_checkin.R;
 import com.codesieucap.ueh_checkin.WelcomeActivity;
 import com.codesieucap.ueh_checkin.databinding.FragmentPersonalBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class PersonalFragment extends Fragment {
 
     private FragmentPersonalBinding binding;
 
-    private ImageView edit_profile;
+    private ImageView edit_profile, avatar;
     private LinearLayout edit_system, change_password, intro_guideline, log_out;
+    private TextView tv_dislay_name, tv_display_email;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +44,13 @@ public class PersonalFragment extends Fragment {
         intro_guideline = root.findViewById(R.id.introduce_and_guideline);
         log_out = root.findViewById(R.id.log_out);
         edit_profile = root.findViewById(R.id.edit_info_user);
+        tv_dislay_name = root.findViewById(R.id.textview_dislay_name_user);
+        tv_display_email = root.findViewById(R.id.textview_email_user);
+        avatar = root.findViewById(R.id.imageview_avatar_user);
+
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        tv_dislay_name.setText(user.getDisplayName());
+//        tv_display_email.setText(user.getEmail());
 
         edit_system.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +105,7 @@ public class PersonalFragment extends Fragment {
         startActivity(intent);
     }
     private void logOut(){
+        FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(getContext(), WelcomeActivity.class);
         startActivity(intent);
     }
