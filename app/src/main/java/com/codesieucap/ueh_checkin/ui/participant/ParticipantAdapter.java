@@ -81,13 +81,13 @@ public class ParticipantAdapter extends RecyclerView.Adapter<ParticipantAdapter.
         @SuppressLint("ResourceAsColor")
         private void binding(JoinerModel participant, OnClickItemListener listener){
             if(participant.getStatus().equals(JoinerModel.STATUS_CHECKED))
-                tv_status.setBackgroundColor(R.color.main_blue);
+                tv_status.setBackgroundResource(R.color.green);
             if(participant.getStatus().equals(JoinerModel.STATUS_SENT))
-                tv_status.setBackgroundColor(R.color.main_blue);
+                tv_status.setBackgroundResource(R.color.main_blue);
             if(participant.getStatus().equals(JoinerModel.STATUS_PENDING))
-                tv_status.setBackgroundColor(R.color.grey);
+                tv_status.setBackgroundResource(R.color.grey);
             if(participant.getStatus().equals(JoinerModel.STATUS_FAIL))
-                tv_status.setBackgroundColor(R.color.red);
+                tv_status.setBackgroundResource(R.color.red);
 
             tv_oder.setText(participant.getIdCode());
             tv_name.setText(participant.getJoinerName());

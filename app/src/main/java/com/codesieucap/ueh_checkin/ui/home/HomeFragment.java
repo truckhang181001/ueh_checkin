@@ -111,8 +111,11 @@ public class HomeFragment extends Fragment {
         mDatabase.child("Event").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                listOfEvent.add(snapshot.getValue(EventModel.class));
-                eventAdapter.notifyDataSetChanged();
+                EventModel eventTemp = snapshot.getValue(EventModel.class);
+                if(eventTemp.getIdUser().equals(mAuth.getCurrentUser().getUid())){
+                    listOfEvent.add(eventTemp);
+                    eventAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override

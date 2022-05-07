@@ -1,6 +1,7 @@
 package com.codesieucap.ueh_checkin.ui.loginAndRegister;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -128,6 +129,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void uploadImage(Uri Uri){
+        ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+        progressDialog.setIcon(R.drawable.ueh_check_logo);
+        progressDialog.setTitle("UEH CHECKIN");
+        progressDialog.setMessage("Đang tạo tài khoản...");
+        progressDialog.show();
+
+
         mStorageReference = FirebaseStorage.getInstance().getReference();
 
         final String randomKey = UUID.randomUUID().toString();
@@ -147,6 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
+                progressDialog.dismiss();
                 if (task.isSuccessful()) {
                     downloadAvatarUri = task.getResult();
                     insertFirebaseAccount(mAuth.getCurrentUser().getUid(),userEmail.getText().toString(),userName.getText().toString(),downloadAvatarUri.toString());
