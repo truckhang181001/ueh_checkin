@@ -71,7 +71,7 @@ public class GetDataTask extends AsyncTask<Void, Void, Void> {
             jIndex=x;
 
         dialog = new ProgressDialog(context);
-        dialog.setTitle("DANH SÁCH THAM GIA"+x);
+        dialog.setTitle("DANH SÁCH THAM GIA");
         dialog.setMessage("Đang lấy dữ liệu người tham gia...");
         dialog.setIcon(R.drawable.ueh_check_logo);
         dialog.show();

@@ -20,6 +20,7 @@
             android:layout_centerInParent="true">
 
             <ImageButton
+                android:id="@+id/imageButtonUpdateAva"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
@@ -40,41 +41,7 @@
             android:textColor="@color/main_black"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:background="@drawable/border_radius_grey"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <TextView
-            android:text="Số điện thoại"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_black"/>
-
-        <EditText
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:background="@drawable/border_radius_grey"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <TextView
-            android:text="Địa chỉ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/main_black"/>
-
-        <EditText
+            android:id="@+id/editTextUpdateName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
